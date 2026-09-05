@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GraFpKa 软件著作权</title>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-nav="outputs">
+
+<nav class="nav" id="site-nav"></nav>
+
+<main class="detail">
+  <div class="container">
+    <a class="back-link" href="index.html#outputs">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回成果与获奖
+    </a>
+
+    <header class="detail-head">
+      <div class="eyebrow">OUTPUT · SOFTWARE COPYRIGHT</div>
+      <h1>小分子 pKa 预测及可解释性分析软件（GraFpKa）V1.0</h1>
+      <div class="detail-meta">
+        <span class="status published">已登记</span>
+        <span class="project-year">登记号 2025SR0138483</span>
+      </div>
+    </header>
+
+    <section class="detail-section">
+      <h2>软件简介</h2>
+      <p>
+        GraFpKa 是基于本项目研究成果开发的小分子 pKa 预测软件，
+        提供酸碱性 pKa 预测与基于积分梯度的原子级可解释性分析功能。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>关联项目与论文</h2>
+      <div class="related-row">
+        <a href="grafpka.html">可解释深度学习 pKa 预测 · GraFpKa</a>
+        <span class="related-note">科研项目 · 01</span>
+      </div>
+      <div class="related-row">
+        <a href="paper-pka.html">In silico prediction of pKa values using explainable deep learning methods</a>
+        <span class="related-note">期刊论文 · 2025</span>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="common.js"></script>
+</body>
+</html>

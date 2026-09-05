@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>条件级亚硝胺致突变性预测 — Nitrosamine Ames</title>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-nav="research">
+
+<nav class="nav" id="site-nav"></nav>
+
+<main class="detail">
+  <div class="container">
+    <a class="back-link" href="index.html#research">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回科研项目
+    </a>
+
+    <header class="detail-head">
+      <div class="eyebrow">RESEARCH · 04</div>
+      <h1>条件级亚硝胺致突变性预测</h1>
+      <div class="detail-en">Nitrosamine Ames</div>
+      <div class="detail-meta">
+        <span class="status ongoing">进行中 · 数据集已完成</span>
+        <span class="project-year">2026 — PRESENT</span>
+      </div>
+    </header>
+
+    <section class="detail-section">
+      <h2>研究问题</h2>
+      <p>
+        亚硝胺类杂质是药物质量控制中的重点风险物质，其 Ames 致突变性结果高度依赖
+        菌株类型与 S9 代谢条件。传统「一个化合物一个标签」的建模方式丢失了这些条件信息。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>已完成工作</h2>
+      <ul>
+        <li>系统检索亚硝胺 Ames 试验公开文献，逐篇提取原始记录 3,893 条</li>
+        <li>标准化整合为 101 个化合物、1,550 条条件级记录的数据集</li>
+        <li>覆盖 8 种测试菌株与 5 种 S9 条件</li>
+        <li>每条数据保留原始文献溯源信息</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h2>正在进行</h2>
+      <p>
+        基于分子指纹、分子描述符及机制特征表征分子，比较多种机器学习方法在
+        条件级预测任务上的表现，探索合适的阈值策略。
+      </p>
+      <div class="project-tags">
+        <span class="tag">Dataset Curation</span>
+        <span class="tag">Mechanistic Features</span>
+        <span class="tag">QSAR</span>
+        <span class="tag">Condition-Level Modeling</span>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2>尚未完成</h2>
+      <p>
+        最终模型、外部验证与风险排序应用仍在推进中，相关性能指标以后续实际结果为准。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>关联成果</h2>
+      <div class="related-row">
+        <a href="index.html#research">该项目正在进行中，成果尚待产出</a>
+        <span class="related-note">—</span>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="common.js"></script>
+</body>
+</html>

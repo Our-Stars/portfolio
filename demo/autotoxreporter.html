@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoToxReporter — 毒性报告撰写多智能体系统</title>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-nav="research">
+
+<nav class="nav" id="site-nav"></nav>
+
+<main class="detail">
+  <div class="container">
+    <a class="back-link" href="index.html#research">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回科研项目
+    </a>
+
+    <header class="detail-head">
+      <div class="eyebrow">RESEARCH · 03</div>
+      <h1>毒性报告撰写多智能体系统</h1>
+      <div class="detail-en">AutoToxReporter</div>
+      <div class="detail-meta">
+        <span class="status review">稿件在审 · J. Cheminformatics</span>
+        <span class="project-year">2025 — PRESENT</span>
+      </div>
+    </header>
+
+    <section class="detail-section">
+      <h2>研究问题</h2>
+      <p>
+        化学品毒性证据分散在预测平台、毒理数据库与文献之中，人工整合耗时且难以追溯。
+        本项目研究如何用多智能体系统将这些分散证据组织成来源可追溯的毒理学报告。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>我的贡献</h2>
+      <ul>
+        <li>设计大纲规划、报告撰写、反思修订与质量检查的多智能体协作流程</li>
+        <li>封装 QSAR Toolbox、admetSAR 3.0、CTD 与 PubMed 四类工具的调用链路</li>
+        <li>比较单次生成与分步生成等不同报告生成策略</li>
+        <li>建立基于评分量规的报告自动评价流程</li>
+        <li>组织抽样人工评价，验证引文对陈述的支持情况</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h2>方法与数据</h2>
+      <p>
+        系统基于大语言模型与 LangChain 框架实现，输入为「化学品 + 毒性终点」，
+        输出为带来源标注的结构化毒理学报告，并配套开发了 Web 应用。
+      </p>
+      <div class="project-tags">
+        <span class="tag">Multi-Agent</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">Tool Calling</span>
+        <span class="tag">QSAR Toolbox</span>
+        <span class="tag">PubMed / CTD</span>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2>当前状态</h2>
+      <p>
+        研究稿件正在 Journal of Cheminformatics 审稿中（第一作者）。
+        抽样人工评价中 94.1% 的引文能够支持对应陈述。完整稿件暂不公开提供下载。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>关联成果</h2>
+      <div class="related-row">
+        <a href="paper-autotoxreporter.html">AutoToxReporter: A Multi-Agent System for Multi-Source Chemical Toxicity Evidence Integration and Toxicological Report Generation</a>
+        <span class="related-note">期刊论文 · 在审</span>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="common.js"></script>
+</body>
+</html>

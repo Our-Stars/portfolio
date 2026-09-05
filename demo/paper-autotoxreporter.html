@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoToxReporter — 在审稿件</title>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-nav="outputs">
+
+<nav class="nav" id="site-nav"></nav>
+
+<main class="detail">
+  <div class="container">
+    <a class="back-link" href="index.html#outputs">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回成果与获奖
+    </a>
+
+    <header class="detail-head">
+      <div class="eyebrow">OUTPUT · JOURNAL ARTICLE · UNDER REVIEW</div>
+      <h1>AutoToxReporter: A Multi-Agent System for Multi-Source Chemical Toxicity Evidence Integration and Toxicological Report Generation</h1>
+      <div class="detail-meta">
+        <span class="status review">在审</span>
+        <span class="project-year">Journal of Cheminformatics</span>
+      </div>
+      <div class="detail-meta">
+        <span class="tag">第一作者</span>
+        <span class="tag">原始研究</span>
+      </div>
+    </header>
+
+    <section class="detail-section">
+      <h2>内容简介</h2>
+      <p>
+        本文介绍一个面向化学品毒性证据整合与报告生成的多智能体系统：
+        以「化学品 + 毒性终点」为输入，通过大纲规划、分步撰写、反思修订与质量检查的智能体流程，
+        调用 QSAR Toolbox、admetSAR、CTD 与 PubMed 等多源工具，输出带来源标注的毒理学报告。
+        抽样人工评价显示 94.1% 的引文能够支持对应陈述。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>作者</h2>
+      <p>Yang C, Zhang Z, Fang J, Li W, Liu G, Tang Y.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2>稿件说明</h2>
+      <p>该稿件目前正在审稿中，本站暂不提供完整稿件下载。若未来发布预印本，将在此更新链接。</p>
+    </section>
+
+    <section class="detail-section">
+      <h2>关联项目</h2>
+      <div class="related-row">
+        <a href="autotoxreporter.html">毒性报告撰写多智能体系统 · AutoToxReporter</a>
+        <span class="related-note">科研项目 · 03</span>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="common.js"></script>
+</body>
+</html>

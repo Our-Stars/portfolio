@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二元混合物毒性预测 — Mixture Toxicity</title>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-nav="research">
+
+<nav class="nav" id="site-nav"></nav>
+
+<main class="detail">
+  <div class="container">
+    <a class="back-link" href="index.html#research">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回科研项目
+    </a>
+
+    <header class="detail-head">
+      <div class="eyebrow">RESEARCH · 02</div>
+      <h1>二元混合物毒性预测</h1>
+      <div class="detail-en">Mixture Toxicity</div>
+      <div class="detail-meta">
+        <span class="status ongoing">已完成 · 探索性研究</span>
+        <span class="project-year">2022 — 2025</span>
+      </div>
+    </header>
+
+    <section class="detail-section">
+      <h2>研究问题</h2>
+      <p>
+        环境与食品中抗生素与三唑类杀菌剂常以混合形式共存，联合毒性难以逐对实验测定。
+        本项目基于公开实验数据，探索从结构表征到混合毒性预测的计算工作流。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>我的贡献</h2>
+      <ul>
+        <li>整合公开二元混合物毒性数据，构建建模数据集</li>
+        <li>实现 Uni-Mol 与传统分子指纹等多套表征方案，并进行混合比例加权</li>
+        <li>以 LightGBM 等多种机器学习算法构建 pEC50 回归模型</li>
+        <li>结合 CA、IA 模型与 rMDR 指数，判定协同、加和与拮抗作用</li>
+        <li>通过应用域分析与 Y 随机化检验评估模型可靠性</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h2>方法与数据</h2>
+      <p>
+        数据来源于公开发表的抗生素—三唑类杀菌剂二元组合毒性实验。
+        表征层比较 Uni-Mol 学习表征与 Morgan、MACCS 等指纹；
+        建模层比较 LightGBM、XGBoost、随机森林等算法。
+      </p>
+      <div class="project-tags">
+        <span class="tag">Uni-Mol</span>
+        <span class="tag">LightGBM</span>
+        <span class="tag">CA / IA</span>
+        <span class="tag">rMDR</span>
+        <span class="tag">Y-Randomization</span>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2>当前状态与局限</h2>
+      <p>
+        本项目为基于公开数据的探索性内部验证案例：训练集与测试集共享全部化合物和二元组合，
+        结果不能解释为对新化合物或新组合的独立外部验证。聚类路线仅作为探索过程保留。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>关联成果</h2>
+      <div class="related-row">
+        <a href="index.html#research">该项目为探索性研究，暂无关联论文</a>
+        <span class="related-note">—</span>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="common.js"></script>
+</body>
+</html>

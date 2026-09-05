@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奖项 — 本科阶段</title>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-nav="outputs">
+
+<nav class="nav" id="site-nav"></nav>
+
+<main class="detail">
+  <div class="container">
+    <a class="back-link" href="index.html#outputs">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回成果与获奖
+    </a>
+
+    <header class="detail-head">
+      <div class="eyebrow">OUTPUT · AWARDS</div>
+      <h1>本科阶段奖项</h1>
+      <div class="detail-meta">
+        <span class="status published">获奖</span>
+        <span class="project-year">2018 — 2022</span>
+      </div>
+    </header>
+
+    <section class="detail-section">
+      <h2>获奖列表</h2>
+      <div class="related-row">
+        <span>全国大学生化工设计竞赛国家二等奖</span>
+        <span class="related-note">国家级</span>
+      </div>
+      <div class="related-row">
+        <span>数学建模竞赛二等奖</span>
+        <span class="related-note">省级</span>
+      </div>
+      <div class="related-row">
+        <span>一等学业奖学金 × 2</span>
+        <span class="related-note">校级</span>
+      </div>
+      <div class="related-row">
+        <span>优秀毕业设计（1 / 100 人）</span>
+        <span class="related-note">校级</span>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2>说明</h2>
+      <p>奖项级别与年份的详细信息将在正式文案中核对补充。</p>
+    </section>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="common.js"></script>
+</body>
+</html>
