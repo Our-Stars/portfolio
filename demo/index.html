@@ -24,10 +24,10 @@
 <header class="hero" id="top">
   <div class="container">
     <div class="eyebrow">COMPUTATIONAL TOXICOLOGY · 2022 — PRESENT</div>
-    <h1>用计算与智能，回答药物安全问题</h1>
+    <h1>计算毒理学与科学智能体开发</h1>
     <p class="hero-sub">
-      从分子表征与毒性预测，到可解释分析与多智能体证据整合——
-      这是一名计算毒理学研究者的研究作品集。
+      从单一物质到混合物的毒性预测，从毒性相关性质到报告撰写智能体——
+      以毒性为核心的研究作品集。
     </p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#research">
@@ -37,57 +37,47 @@
       <a class="btn btn-ghost" href="#outputs">论文与成果</a>
     </div>
 
-    <figure class="hero-figure">
+    <figure class="figure">
       <div class="figure-header">
-        <span class="figure-title">原子级贡献解释 · 研究示意</span>
-        <span class="figure-meta">INTEGRATED GRADIENTS · GraFpKa</span>
+        <span class="figure-title">研究主线 · 以毒性为核心</span>
+        <span class="figure-meta">TOXICITY-CENTERED RESEARCH · 04 PROJECTS</span>
       </div>
-      <svg class="figure-svg" viewBox="0 0 800 240" role="img" aria-label="分子原子贡献着色示意图">
-        <!-- 图例 -->
-        <g>
-          <circle cx="586" cy="52" r="5" class="atom-pos"/>
-          <text x="600" y="56" class="lg-text">正贡献</text>
-          <circle cx="688" cy="52" r="5" class="atom-neg"/>
-          <text x="702" y="56" class="lg-text">负贡献</text>
-          <circle cx="586" cy="86" r="5" class="atom"/>
-          <text x="600" y="90" class="lg-text">中性原子</text>
-        </g>
-        <!-- 苯环 -->
-        <g>
-          <line class="bond" x1="150" y1="68" x2="105" y2="94"/>
-          <line class="bond" x1="105" y1="94" x2="105" y2="146"/>
-          <line class="bond" x1="105" y1="146" x2="150" y2="172"/>
-          <line class="bond" x1="150" y1="172" x2="195" y2="146"/>
-          <line class="bond" x1="195" y1="146" x2="195" y2="94"/>
-          <line class="bond" x1="195" y1="94" x2="150" y2="68"/>
-          <circle class="aromatic" cx="150" cy="120" r="30"/>
-        </g>
-        <!-- 链 -->
-        <g>
-          <line class="bond" x1="195" y1="94" x2="255" y2="78"/>
-          <line class="bond" x1="255" y1="78" x2="315" y2="94"/>
-          <line class="bond" x1="315" y1="94" x2="375" y2="78"/>
-          <line class="bond" x1="375" y1="78" x2="435" y2="94"/>
-        </g>
-        <!-- 原子 -->
-        <g>
-          <circle class="atom" cx="150" cy="68" r="9"/>
-          <circle class="atom" cx="105" cy="94" r="9"/>
-          <circle class="atom" cx="105" cy="146" r="9"/>
-          <circle class="atom atom-pos atom-hot" cx="150" cy="172" r="9"/>
-          <circle class="atom" cx="195" cy="146" r="9"/>
-          <circle class="atom" cx="195" cy="94" r="9"/>
-          <circle class="atom" cx="255" cy="78" r="9"/>
-          <circle class="atom atom-pos atom-hot" cx="315" cy="94" r="9"/>
-          <circle class="atom" cx="375" cy="78" r="9"/>
-          <circle class="atom atom-neg atom-hot" cx="435" cy="94" r="9"/>
-        </g>
-        <!-- 标注 -->
-        <text x="452" y="98" class="elem-label" text-anchor="middle" dy="3.5">N</text>
-        <text x="128" y="200" class="contrib pos">+0.38</text>
-        <text x="300" y="66" class="contrib pos">+0.12</text>
-        <text x="452" y="128" class="contrib neg">&minus;0.27</text>
-        <text x="40" y="224" class="figure-cap">原子着色：对 pKa 预测值的边际贡献方向</text>
+      <svg class="figure-svg" viewBox="0 0 800 280" role="img" aria-label="以毒性为核心的四条研究主线示意图">
+        <!-- 中心节点 -->
+        <circle class="aromatic" cx="400" cy="75" r="46"/>
+        <circle class="hub" cx="400" cy="75" r="34"/>
+        <text class="hub-label" x="400" y="76">毒性</text>
+        <text class="hub-en" x="400" y="94">TOXICITY</text>
+        <!-- 分支 -->
+        <line class="branch" x1="368" y1="86.5" x2="100" y2="182"/>
+        <line class="branch" x1="373.5" y1="96.5" x2="267" y2="182"/>
+        <line class="branch" x1="426.5" y1="96.5" x2="533" y2="182"/>
+        <line class="branch" x1="432" y1="86.5" x2="700" y2="182"/>
+        <circle class="branch-dot" cx="100" cy="182" r="2.5"/>
+        <circle class="branch-dot" cx="267" cy="182" r="2.5"/>
+        <circle class="branch-dot" cx="533" cy="182" r="2.5"/>
+        <circle class="branch-dot" cx="700" cy="182" r="2.5"/>
+        <!-- 节点：单一物质 -->
+        <polygon class="node-icon" points="115.6,196 100,187 84.4,196 84.4,214 100,223 115.6,214"/>
+        <!-- 节点：混合物 -->
+        <polygon class="node-icon" points="272,193.5 259,186 246,193.5 246,208.5 259,216 272,208.5"/>
+        <polygon class="node-icon alt" points="290,203.5 277,196 264,203.5 264,216.5 277,224 290,216.5"/>
+        <!-- 节点：毒性相关性质 -->
+        <text class="node-pka" x="533" y="212">pK<tspan dy="4" font-size="12">a</tspan></text>
+        <!-- 节点：智能体 -->
+        <rect class="node-icon" x="690" y="188" width="20" height="26" rx="2"/>
+        <line class="branch" x1="695" y1="196" x2="705" y2="196"/>
+        <line class="branch" x1="695" y1="202" x2="705" y2="202"/>
+        <line class="branch" x1="695" y1="208" x2="701" y2="208"/>
+        <!-- 标签 -->
+        <text class="node-label" x="100" y="249">单一物质毒性预测</text>
+        <text class="node-en" x="100" y="267">SUBSTANCE TOXICITY</text>
+        <text class="node-label" x="267" y="249">混合物毒性预测</text>
+        <text class="node-en" x="267" y="267">MIXTURE TOXICITY</text>
+        <text class="node-label" x="533" y="249">毒性相关性质预测</text>
+        <text class="node-en" x="533" y="267">PROPERTY PREDICTION</text>
+        <text class="node-label" x="700" y="249">报告撰写智能体</text>
+        <text class="node-en" x="700" y="267">REPORTING AGENT</text>
       </svg>
     </figure>
   </div>
@@ -104,10 +94,10 @@
     <article class="project-row reveal">
       <div class="project-num">01</div>
       <div class="project-main">
-        <h3><a class="title-link" href="grafpka.html">可解释深度学习 pKa 预测</a></h3>
+        <h3><a class="title-link" href="grafpka.html">可解释深度学习 pK<sub>a</sub> 预测</a></h3>
         <div class="project-en">GraFpKa</div>
         <p class="project-desc">
-          分子图与分子指纹融合表征，结合预训练—微调迁移策略构建酸碱 pKa 预测模型，
+          分子图与分子指纹融合表征，结合预训练—微调迁移策略构建酸碱 pK<sub>a</sub> 预测模型，
           通过积分梯度实现原子级贡献解释，完成外部验证与适用域分析。
         </p>
         <div class="project-tags">
@@ -215,7 +205,7 @@
     <div class="output-row reveal">
       <span class="output-year">2025</span>
       <div>
-        <a class="output-title title-link" href="paper-pka.html">In silico prediction of pKa values using explainable deep learning methods</a>
+        <a class="output-title title-link" href="paper-pka.html">In silico prediction of pK<sub>a</sub> values using explainable deep learning methods</a>
         <div class="output-venue">Journal of Pharmaceutical Analysis · 第一作者</div>
       </div>
       <span class="status published">已发表</span>
@@ -245,7 +235,7 @@
         <a class="output-title title-link" href="chapter-admet.html">AI-Driven Prediction of Drug ADMET Properties</a>
         <div class="output-venue">Springer 专著章节 · 第一作者</div>
       </div>
-      <span class="status review">编审中</span>
+      <span class="status review">在审</span>
     </div>
 
     <div class="output-row reveal">
@@ -254,25 +244,25 @@
         <a class="output-title title-link" href="textbook-aipharmacy.html">《人工智能药学》第 5-2 章第一节：基于机器学习的 ADME 性质预测</a>
         <div class="output-venue">教材参编 · 撰写与修订</div>
       </div>
-      <span class="status review">编审中</span>
+      <span class="status review">在审</span>
     </div>
 
     <div class="output-row reveal">
       <span class="output-year">2025</span>
       <div>
-        <a class="output-title title-link" href="software-grafpka.html">GraFpKa 小分子 pKa 预测及可解释性分析软件 V1.0</a>
+        <a class="output-title title-link" href="software-grafpka.html">GraFpKa 小分子 pK<sub>a</sub> 预测及可解释性分析软件 V1.0</a>
         <div class="output-venue">软件著作权 2025SR0138483</div>
       </div>
       <span class="status published">已登记</span>
     </div>
 
     <div class="output-row reveal">
-      <span class="output-year">2018 — 2022</span>
+      <span class="output-year">2018 — PRESENT</span>
       <div>
-        <a class="output-title title-link" href="awards.html">数学建模竞赛二等奖 · 化工设计竞赛国家二等奖 · 一等学业奖学金 ×2</a>
-        <div class="output-venue">本科阶段奖项</div>
+        <a class="output-title title-link" href="awards.html">数学建模竞赛二、三等奖 · 化工设计竞赛国家二等奖 · 一等学业奖学金 ×2</a>
+        <div class="output-venue">博士与本科阶段奖项</div>
       </div>
-      <span class="status published">获奖</span>
+      <span class="status published">已获奖</span>
     </div>
   </div>
 </section>

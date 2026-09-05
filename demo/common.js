@@ -101,4 +101,95 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(function (el) { io.observe(el); });
   }
+
+  // 鼠标拖影（仅桌面端精确指针生效，遵循系统减少动态设置）
+  (function initTrail() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    var canvas = document.createElement('canvas');
+    canvas.className = 'trail-canvas';
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var points = [];
+    var TAIL = 450;
+    var moveCount = 0;
+
+    function palette() {
+      return document.documentElement.getAttribute('data-theme') === 'light'
+        ? { core: '29, 155, 240', fleck: '15, 20, 25' }
+        : { core: '29, 155, 240', fleck: '255, 255, 255' };
+    }
+
+    function resize() {
+      canvas.width = Math.round(window.innerWidth * DPR);
+      canvas.height = Math.round(window.innerHeight * DPR);
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    document.body.appendChild(canvas);
+
+    window.addEventListener('mousemove', function (e) {
+      var last = points[points.length - 1];
+      if (last) {
+        var d = Math.hypot(e.clientX - last.x, e.clientY - last.y);
+        if (d < 4) return;
+      }
+      moveCount++;
+      points.push({
+        x: e.clientX,
+        y: e.clientY,
+        t: performance.now(),
+        fleck: moveCount % 7 === 0
+      });
+      if (points.length > 48) points.shift();
+    });
+
+    function frame(now) {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      for (var i = points.length - 1; i >= 0; i--) {
+        if (now - points[i].t > TAIL) points.splice(i, 1);
+      }
+      var pal = palette();
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      for (var j = 1; j < points.length; j++) {
+        var a = points[j - 1], b = points[j];
+        var k = 1 - (now - b.t) / TAIL;
+        if (k <= 0) continue;
+        ctx.strokeStyle = 'rgba(' + pal.core + ',' + (0.3 * k).toFixed(3) + ')';
+        ctx.lineWidth = 2 * k + 0.3;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+      for (var m = 0; m < points.length; m++) {
+        var p = points[m];
+        var k2 = 1 - (now - p.t) / TAIL;
+        if (k2 <= 0) continue;
+        var col = p.fleck ? pal.fleck : pal.core;
+        var r = (p.fleck ? 3 : 1.8) * k2;
+        var glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3.5);
+        glow.addColorStop(0, 'rgba(' + col + ',' + (0.4 * k2).toFixed(3) + ')');
+        glow.addColorStop(1, 'rgba(' + col + ',0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r * 3.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(' + col + ',' + (0.9 * k2).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
 })();
