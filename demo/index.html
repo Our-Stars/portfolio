@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Portfolio — Demo</title>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #000;
+    --fg: #fff;
+    --fg-secondary: #a0a0a0;
+    --fg-muted: #999;
+    --fg-faint: #666;
+    --divider: rgba(255, 255, 255, 0.1);
+    --divider-strong: rgba(255, 255, 255, 0.2);
+    --accent: #1d9bf0;
+    --status-published: #4ade80;
+    --status-review: #f5b942;
+    --status-ongoing: #8fa3b8;
+    --nav-bg: rgba(0, 0, 0, 0.85);
+    --hover-bg: rgba(255, 255, 255, 0.02);
+    --chart-bg: rgba(255, 255, 255, 0.015);
+    --chart-grid: rgba(255, 255, 255, 0.08);
+    --chart-text: #666;
+    --btn-primary-hover: #d9d9d9;
+    --font-sans: "Inter", -apple-system, "SF Pro Text", "Helvetica Neue",
+      "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #fff;
+    --fg: #0f1419;
+    --fg-secondary: #536471;
+    --fg-muted: #71767b;
+    --fg-faint: #8b98a5;
+    --divider: rgba(0, 0, 0, 0.1);
+    --divider-strong: rgba(0, 0, 0, 0.2);
+    --status-published: #00a75c;
+    --status-review: #b58300;
+    --status-ongoing: #536471;
+    --nav-bg: rgba(255, 255, 255, 0.85);
+    --hover-bg: rgba(0, 0, 0, 0.03);
+    --chart-bg: rgba(0, 0, 0, 0.02);
+    --chart-grid: rgba(0, 0, 0, 0.08);
+    --chart-text: #8b98a5;
+    --btn-primary-hover: #333333;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: rgba(29, 155, 240, 0.35); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ 顶部导航 ============ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--fg);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--fg-secondary);
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--fg); }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: 9999px;
+    padding: 8px 16px;
+    transition: background 0.2s ease;
+  }
+
+  .nav-cta:hover { background: var(--btn-primary-hover); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 1px solid var(--divider-strong);
+    border-radius: 50%;
+    color: var(--fg-secondary);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .theme-btn:hover { color: var(--fg); border-color: var(--fg); }
+
+  .theme-btn .icon-moon { display: none; }
+
+  :root[data-theme="light"] .theme-btn .icon-sun { display: none; }
+  :root[data-theme="light"] .theme-btn .icon-moon { display: block; }
+
+  .menu-btn {
+    display: none;
+    background: none;
+    border: 1px solid var(--divider-strong);
+    border-radius: 8px;
+    color: var(--fg);
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    padding: 8px 32px 20px;
+    border-top: 1px solid var(--divider);
+    background: var(--bg);
+  }
+
+  .mobile-menu a {
+    padding: 14px 0;
+    font-size: 15px;
+    color: var(--fg-secondary);
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  .mobile-menu.open { display: flex; }
+
+  /* ============ 首屏 ============ */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 128px 0 64px;
+    border-bottom: 1px solid var(--divider);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--fg-muted);
+    letter-spacing: 0.13px;
+    margin-bottom: 28px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--divider-strong);
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 500;
+    letter-spacing: -1.2px;
+    line-height: 1.08;
+    max-width: 14em;
+  }
+
+  .hero h1 .dim { color: var(--fg-faint); }
+
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 17px;
+    color: var(--fg-secondary);
+    max-width: 34em;
+    line-height: 1.75;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 9999px;
+    padding: 12px 20px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  .btn-primary:hover { background: var(--btn-primary-hover); }
+
+  .btn-ghost {
+    border: 1px solid var(--divider-strong);
+    color: var(--fg);
+  }
+
+  .btn-ghost:hover { border-color: var(--fg); }
+
+  .btn svg { transition: transform 0.2s ease; }
+  .btn:hover svg { transform: translateX(3px); }
+
+  /* 首屏图表 */
+  .hero-chart {
+    margin-top: 72px;
+    width: 100%;
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+    padding: 28px;
+    background: var(--chart-bg);
+  }
+
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chart-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fg-secondary);
+  }
+
+  .chart-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-faint);
+    letter-spacing: 0.1px;
+  }
+
+  .chart-svg { width: 100%; height: auto; display: block; }
+
+  .chart-svg line { stroke: var(--chart-grid); }
+  .chart-svg text { fill: var(--chart-text); }
+  .chart-svg circle { fill: var(--accent); }
+  .chart-svg circle.end-dot { fill: var(--fg); }
+
+  .chart-line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+    animation: draw 2.4s ease forwards 0.4s;
+  }
+
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  /* ============ 通用区块 ============ */
+  section { border-bottom: 1px solid var(--divider); }
+
+  .section-pad { padding: 96px 0; }
+
+  .section-head {
+    margin-bottom: 56px;
+  }
+
+  .section-kicker {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--fg-muted);
+    letter-spacing: 0.13px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+    line-height: 1.2;
+    max-width: 20em;
+  }
+
+  /* ============ 项目列表（编号行） ============ */
+  .project-row {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 32px;
+    padding: 44px 0;
+    border-top: 1px solid var(--divider);
+    align-items: start;
+    transition: background 0.25s ease;
+    position: relative;
+  }
+
+  .project-row:last-child { border-bottom: 1px solid var(--divider); }
+
+  .project-row:hover { background: var(--hover-bg); }
+
+  .project-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg-muted);
+    letter-spacing: 0.13px;
+    padding-top: 8px;
+  }
+
+  .project-main h3 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+
+  .project-en {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--fg-faint);
+    letter-spacing: 0.13px;
+    margin-bottom: 16px;
+  }
+
+  .project-desc {
+    font-size: 15px;
+    color: var(--fg-secondary);
+    max-width: 44em;
+    line-height: 1.75;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--fg-muted);
+    border: 1px solid var(--divider);
+    border-radius: 9999px;
+    padding: 4px 12px;
+    letter-spacing: 0.1px;
+  }
+
+  .project-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    padding-top: 8px;
+    white-space: nowrap;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--fg-secondary);
+  }
+
+  .status::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .status.published { color: var(--status-published); }
+  .status.review { color: var(--status-review); }
+  .status.ongoing { color: var(--status-ongoing); }
+
+  .project-year {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-faint);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg);
+    margin-top: 4px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .project-row:hover .project-link { opacity: 1; transform: translateY(0); }
+
+  /* ============ 成果列表 ============ */
+  .output-row {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 28px;
+    padding: 26px 0;
+    border-top: 1px solid var(--divider);
+    align-items: baseline;
+    transition: background 0.25s ease;
+  }
+
+  .output-row:last-child { border-bottom: 1px solid var(--divider); }
+  .output-row:hover { background: var(--hover-bg); }
+
+  .output-year {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--fg-muted);
+  }
+
+  .output-title {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.1px;
+  }
+
+  .output-venue {
+    font-size: 14px;
+    color: var(--fg-secondary);
+    margin-top: 4px;
+  }
+
+  .output-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-faint);
+    margin-top: 6px;
+    letter-spacing: 0.1px;
+  }
+
+  /* ============ 关于 ============ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--fg-secondary);
+    margin-bottom: 20px;
+    line-height: 1.8;
+    max-width: 36em;
+  }
+
+  .about-meta {
+    border-left: 1px solid var(--divider);
+    padding-left: 40px;
+  }
+
+  .meta-item { margin-bottom: 32px; }
+
+  .meta-item dt {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-faint);
+    letter-spacing: 0.13px;
+    margin-bottom: 10px;
+  }
+
+  .meta-item dd {
+    font-size: 15px;
+    color: var(--fg-secondary);
+    line-height: 1.7;
+  }
+
+  /* ============ 页脚 ============ */
+  .footer-cta {
+    padding: 96px 0;
+    text-align: left;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .footer-cta h2 {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+    margin-bottom: 32px;
+  }
+
+  footer { padding: 48px 0 64px; }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .footer-note {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--fg-faint);
+    line-height: 2;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 40px;
+  }
+
+  .footer-links a {
+    display: block;
+    font-size: 13px;
+    color: var(--fg-muted);
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--fg); }
+
+  .footer-links .col-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-faint);
+    margin-bottom: 16px;
+  }
+
+  /* ============ 滚动动画 ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .chart-line { animation: none; stroke-dashoffset: 0; }
+    .btn svg, .project-link { transition: none; }
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width: 860px) {
+    .nav-links, .nav-cta { display: none; }
+    .menu-btn { display: block; }
+    .project-row {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .project-side {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    .project-link { opacity: 1; transform: none; }
+    .output-row { grid-template-columns: 1fr; gap: 8px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--divider); padding-top: 32px; }
+    .hero { min-height: auto; }
+    .footer-inner { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="#top">Research Portfolio</a>
+    <div class="nav-links">
+      <a href="#research">科研项目</a>
+      <a href="#outputs">成果与获奖</a>
+      <a href="#about">关于我</a>
+      <a class="nav-cta" href="mailto:demo@example.com">
+        联系我
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      </a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeBtn" aria-label="切换昼夜主题">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="打开菜单">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#research">科研项目</a>
+    <a href="#outputs">成果与获奖</a>
+    <a href="#about">关于我</a>
+    <a href="mailto:demo@example.com">联系我</a>
+  </div>
+</nav>
+
+<!-- 首屏 -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="eyebrow">COMPUTATIONAL TOXICOLOGY · 2022 — PRESENT</div>
+    <h1>计算毒理学 <span class="dim">×</span> 科学智能体</h1>
+    <p class="hero-sub">
+      围绕分子表征、预测建模、模型解释与多源证据整合，
+      构建从数据到决策的药物安全研究能力。
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#research">
+        查看科研项目
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#outputs">论文与成果</a>
+    </div>
+
+    <figure class="hero-chart">
+      <div class="chart-header">
+        <span class="chart-title">模型外部验证表现</span>
+        <span class="chart-meta">EXTERNAL VALIDATION · R² = 0.91 · Q² = 0.88</span>
+      </div>
+      <svg class="chart-svg" viewBox="0 0 800 220" role="img" aria-label="外部验证表现示意图">
+        <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
+          <line x1="40" y1="20" x2="40" y2="180"/>
+          <line x1="40" y1="180" x2="780" y2="180"/>
+          <line x1="40" y1="130" x2="780" y2="130" stroke-dasharray="2 6"/>
+          <line x1="40" y1="80" x2="780" y2="80" stroke-dasharray="2 6"/>
+          <line x1="40" y1="30" x2="780" y2="30" stroke-dasharray="2 6"/>
+        </g>
+        <text x="0" y="24" fill="#666" font-size="11" font-family="monospace">1.0</text>
+        <text x="0" y="74" fill="#666" font-size="11" font-family="monospace">0.8</text>
+        <text x="0" y="124" fill="#666" font-size="11" font-family="monospace">0.6</text>
+        <text x="0" y="174" fill="#666" font-size="11" font-family="monospace">0.4</text>
+        <text x="40" y="204" fill="#666" font-size="11" font-family="monospace">TRAIN</text>
+        <text x="360" y="204" fill="#666" font-size="11" font-family="monospace">VALIDATION</text>
+        <text x="700" y="204" fill="#666" font-size="11" font-family="monospace">TEST</text>
+        <path class="chart-line" d="M 40 168 C 120 160, 180 150, 240 138 C 300 126, 340 118, 400 104 C 460 90, 520 76, 580 62 C 640 50, 700 40, 780 28"/>
+        <circle cx="400" cy="104" r="3.5" fill="#1d9bf0"/>
+        <circle cx="580" cy="62" r="3.5" fill="#1d9bf0"/>
+        <circle class="end-dot" cx="780" cy="28" r="3.5" fill="#fff"/>
+      </svg>
+    </figure>
+  </div>
+</header>
+
+<!-- 科研项目 -->
+<section id="research">
+  <div class="container section-pad">
+    <div class="section-head reveal">
+      <div class="section-kicker">SELECTED RESEARCH · 04</div>
+      <h2 class="section-title">四个科研项目，一条从分子表征到科学智能体的研究主线</h2>
+    </div>
+
+    <article class="project-row reveal">
+      <div class="project-num">01</div>
+      <div class="project-main">
+        <h3>可解释深度学习 pKa 预测</h3>
+        <div class="project-en">GraFpKa</div>
+        <p class="project-desc">
+          分子图与分子指纹融合表征，结合预训练—微调迁移策略构建酸碱 pKa 预测模型，
+          通过积分梯度实现原子级贡献解释，完成外部验证与适用域分析。
+        </p>
+        <div class="project-tags">
+          <span class="tag">AttentiveFP</span>
+          <span class="tag">Transfer Learning</span>
+          <span class="tag">Integrated Gradients</span>
+        </div>
+      </div>
+      <div class="project-side">
+        <span class="status published">已发表 · JPA</span>
+        <span class="project-year">2022 — 2025</span>
+        <a class="project-link" href="#">
+          查看项目
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="project-row reveal">
+      <div class="project-num">02</div>
+      <div class="project-main">
+        <h3>二元混合物毒性预测</h3>
+        <div class="project-en">Mixture Toxicity</div>
+        <p class="project-desc">
+          基于 Uni-Mol 与传统分子表征，结合 CA / IA 模型与 rMDR 指数，
+          构建抗生素与三唑类杀菌剂二元混合物的 pEC50 回归与相互作用判定工作流。
+        </p>
+        <div class="project-tags">
+          <span class="tag">Uni-Mol</span>
+          <span class="tag">LightGBM</span>
+          <span class="tag">CA / IA / rMDR</span>
+        </div>
+      </div>
+      <div class="project-side">
+        <span class="status ongoing">探索性研究</span>
+        <span class="project-year">2022 — 2025</span>
+        <a class="project-link" href="#">
+          查看项目
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="project-row reveal">
+      <div class="project-num">03</div>
+      <div class="project-main">
+        <h3>毒性报告撰写多智能体系统</h3>
+        <div class="project-en">AutoToxReporter</div>
+        <p class="project-desc">
+          整合 QSAR Toolbox、admetSAR、CTD 与 PubMed 的预测结果与文献证据，
+          通过大纲规划、分步撰写、反思修订与质量检查的多智能体协作，
+          生成来源可追溯的毒理学报告。
+        </p>
+        <div class="project-tags">
+          <span class="tag">Multi-Agent</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">Tool Calling</span>
+        </div>
+      </div>
+      <div class="project-side">
+        <span class="status review">稿件在审 · J. Cheminformatics</span>
+        <span class="project-year">2025 — PRESENT</span>
+        <a class="project-link" href="#">
+          查看项目
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="project-row reveal">
+      <div class="project-num">04</div>
+      <div class="project-main">
+        <h3>条件级亚硝胺致突变性预测</h3>
+        <div class="project-en">Nitrosamine Ames</div>
+        <p class="project-desc">
+          已完成 101 个化合物、1,550 条菌株—S9 条件级 Ames 数据集的检索、提取与清洗，
+          正在探索机制特征表征与条件级建模策略。
+        </p>
+        <div class="project-tags">
+          <span class="tag">Dataset Curation</span>
+          <span class="tag">Mechanistic Features</span>
+          <span class="tag">QSAR</span>
+        </div>
+      </div>
+      <div class="project-side">
+        <span class="status ongoing">进行中 · 数据集完成</span>
+        <span class="project-year">2026 — PRESENT</span>
+        <a class="project-link" href="#">
+          查看项目
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 成果与获奖 -->
+<section id="outputs">
+  <div class="container section-pad">
+    <div class="section-head reveal">
+      <div class="section-kicker">OUTPUTS · PUBLICATIONS &amp; AWARDS</div>
+      <h2 class="section-title">论文、专著、软著与奖项</h2>
+    </div>
+
+    <div class="output-row reveal">
+      <span class="output-year">2025</span>
+      <div>
+        <div class="output-title">In silico prediction of pKa values using explainable deep learning methods</div>
+        <div class="output-venue">Journal of Pharmaceutical Analysis · 第一作者</div>
+      </div>
+      <span class="status published">已发表</span>
+    </div>
+
+    <div class="output-row reveal">
+      <span class="output-year">2025</span>
+      <div>
+        <div class="output-title">AutoToxReporter: A Multi-Agent System for Multi-Source Chemical Toxicity Evidence Integration</div>
+        <div class="output-venue">Journal of Cheminformatics · 第一作者</div>
+      </div>
+      <span class="status review">在审</span>
+    </div>
+
+    <div class="output-row reveal">
+      <span class="output-year">2026</span>
+      <div>
+        <div class="output-title">AI 驱动的化学品安全性评估：技术范式、应用进展与未来展望</div>
+        <div class="output-venue">华东理工大学学报（自然科学版） · 第一作者</div>
+      </div>
+      <span class="status published">已发表</span>
+    </div>
+
+    <div class="output-row reveal">
+      <span class="output-year">2026</span>
+      <div>
+        <div class="output-title">AI-Driven Prediction of Drug ADMET Properties</div>
+        <div class="output-venue">Springer 专著章节 · 第一作者</div>
+      </div>
+      <span class="status review">编审中</span>
+    </div>
+
+    <div class="output-row reveal">
+      <span class="output-year">2025</span>
+      <div>
+        <div class="output-title">GraFpKa 小分子 pKa 预测及可解释性分析软件 V1.0</div>
+        <div class="output-venue">软件著作权 2025SR0138483</div>
+      </div>
+      <span class="status published">已登记</span>
+    </div>
+
+    <div class="output-row reveal">
+      <span class="output-year">2018 — 2022</span>
+      <div>
+        <div class="output-title">数学建模竞赛二等奖 · 化工设计竞赛国家二等奖 · 一等学业奖学金 ×2</div>
+        <div class="output-venue">本科阶段奖项</div>
+      </div>
+      <span class="status published">获奖</span>
+    </div>
+  </div>
+</section>
+
+<!-- 关于我 -->
+<section id="about">
+  <div class="container section-pad">
+    <div class="section-head reveal">
+      <div class="section-kicker">ABOUT</div>
+      <h2 class="section-title">关于我</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          杨晨，华东理工大学药物设计学博士研究生（2022 — 2027），
+          研究方向为计算毒理学与科学智能体开发。
+        </p>
+        <p>
+          本科毕业于西南交通大学制药工程专业（前 5%）。长期专注于
+          分子性质预测、混合物毒性建模与多智能体系统的交叉研究，
+          以第一作者发表多篇期刊论文并参与专著与教材撰写。
+        </p>
+      </div>
+      <dl class="about-meta reveal">
+        <div class="meta-item">
+          <dt>EDUCATION</dt>
+          <dd>华东理工大学 · 药物设计学 · 医学博士<br>西南交通大学 · 制药工程 · 工学学士</dd>
+        </div>
+        <div class="meta-item">
+          <dt>RESEARCH INTERESTS</dt>
+          <dd>计算毒理学 · QSAR 建模 · 可解释机器学习<br>LLM 智能体 · 多源证据整合</dd>
+        </div>
+        <div class="meta-item">
+          <dt>CONTACT</dt>
+          <dd>demo@example.com</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 底部 CTA -->
+<div class="footer-cta">
+  <div class="container reveal">
+    <div class="section-kicker">GET IN TOUCH</div>
+    <h2>如果你的团队正在寻找计算毒理学方向的研究者</h2>
+    <a class="btn btn-primary" href="mailto:demo@example.com">
+      发送邮件
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-note">
+      © 2026 RESEARCH PORTFOLIO<br>
+      DESIGNED IN THE SPIRIT OF MINIMALISM
+    </div>
+    <div class="footer-links">
+      <div>
+        <div class="col-title">INDEX</div>
+        <a href="#research">科研项目</a>
+        <a href="#outputs">成果与获奖</a>
+        <a href="#about">关于我</a>
+      </div>
+      <div>
+        <div class="col-title">LINKS</div>
+        <a href="#">GitHub</a>
+        <a href="#">Google Scholar</a>
+        <a href="#">ORCID</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 移动端菜单
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'))
+  );
+
+  // 昼夜主题切换
+  const themeBtn = document.getElementById('themeBtn');
+  themeBtn.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  // 滚动渐显
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
