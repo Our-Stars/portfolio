@@ -57,5 +57,5 @@
 .pka-architecture-svg .pa-bit-label { font-family: var(--font-mono); font-size: 8px; fill: var(--fg-secondary); }
 .pka-architecture-svg .pa-output { fill: var(--pa-tint); stroke: var(--pa-blue); }
 .pka-architecture-svg .pa-output-label { font-size: 15px; font-weight: 500; fill: var(--fg); }
-.pka-architecture-caption { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider); font-size: 13px; line-height: 1.8; color: var(--fg-muted); max-width: 68em; }
+.pka-architecture-caption { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider); font-size: 13px; line-height: 1.8; color: var(--fg-muted); }
 @media (max-width: 600px) { .pka-page .detail-section .figure { padding: 16px; } }
