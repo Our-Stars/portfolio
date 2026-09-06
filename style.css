@@ -240,6 +240,45 @@ sub, sup { font-size: 0.7em; line-height: 0; }
   line-height: 1.75;
 }
 
+/* 首屏背景：亚硝胺骨架线稿（学科签名，主题自适应，仅宽屏显示） */
+:root { --mol-op: 0.15; }
+:root[data-theme="light"] { --mol-op: 0.17; }
+
+.hero-molecule {
+  position: absolute;
+  top: 96px;
+  right: -130px;
+  width: 620px;
+  color: var(--fg);
+  opacity: var(--mol-op);
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 52%, transparent 82%);
+  animation: mol-fade 1.2s ease 0.05s both;
+}
+
+.hero .container { position: relative; z-index: 1; }
+
+@keyframes mol-fade { from { opacity: 0; } }
+
+/* CTA 区：同款骨架线稿镜像收尾 */
+.footer-cta { position: relative; overflow: hidden; }
+.footer-cta .container { position: relative; z-index: 1; }
+
+.cta-molecule {
+  position: absolute;
+  bottom: -70px;
+  left: -150px;
+  width: 540px;
+  color: var(--fg);
+  opacity: calc(var(--mol-op) * 0.7);
+  pointer-events: none;
+  transform: scaleX(-1);
+  -webkit-mask-image: linear-gradient(to top, #000 55%, transparent 85%);
+  mask-image: linear-gradient(to top, #000 55%, transparent 85%);
+}
+
 .hero-ctas {
   display: flex;
   gap: 14px;
@@ -830,9 +869,14 @@ footer { padding: 48px 0 64px; }
   .btn svg, .project-link { transition: none; }
   .hero .eyebrow, .hero h1, .hero .hero-sub,
   .hero .hero-ctas, .hero .figure { animation: none; }
+  .hero-molecule { animation: none; }
 }
 
 /* ============ 响应式 ============ */
+@media (max-width: 1359px) {
+  .hero-molecule, .cta-molecule { display: none; }
+}
+
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .menu-btn { display: block; }
@@ -894,6 +938,8 @@ footer { padding: 48px 0 64px; }
   .mobile-menu,
   .hero-ctas,
   .footer-cta,
+  .hero-molecule,
+  .cta-molecule,
   .back-link {
     display: none !important;
   }
