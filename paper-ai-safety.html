@@ -68,7 +68,7 @@
         <div class="op-scroll" tabindex="0" role="region" aria-label="综述框架图，窄屏可横向滚动">
           <svg class="figure-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" role="img" aria-labelledby="as-svg-title as-svg-desc">
             <title id="as-svg-title">AI 驱动化学品安全性评估技术流程图</title>
-            <desc id="as-svg-desc">流程图分为三层：左侧数据层包含公共数据库、监管数据、文献挖掘和高通量实验四个数据来源，经汇总后流入中间模型层；模型层包含数据采集与处理、分子结构表征、特征选择与降维、模型构建与训练、模型评估与验证、适用域定义六个纵向环节，上方标注 RF、GNN、Transformer 等算法；模型输出分流至右侧应用层的药物研发、化妆品评估和环境管理三个场景；底部为数据反馈与模型迭代闭环，从应用层回流至数据层。</desc>
+            <desc id="as-svg-desc">流程图分为三层：左侧数据层包含公共数据库、监管数据、文献挖掘和高通量实验四个数据来源，经汇总后流入中间模型层；模型层包含数据采集与处理、分子结构表征、特征选择与降维、模型构建与训练、模型评估与验证、应用域定义六个纵向环节，上方标注 RF、GNN、Transformer 等算法；模型输出分流至右侧应用层的药物研发、化妆品评估和环境管理三个场景；底部为数据反馈与模型迭代闭环，从应用层回流至数据层。</desc>
             <defs>
               <marker id="as-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
               <marker id="as-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-blue)"/></marker>
@@ -125,33 +125,40 @@
 
             <!-- 柱 1：数据采集与处理 -->
             <rect x="290" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="325" y="218" text-anchor="middle" class="op-small" style="font-size:14.5px">数据采集</text>
-            <text x="325" y="240" text-anchor="middle" class="op-small" style="font-size:14.5px">与处理</text>
+            <text x="325" y="218" text-anchor="middle" class="op-small" style="font-size:16px">数据采集</text>
+            <text x="325" y="240" text-anchor="middle" class="op-small" style="font-size:16px">与处理</text>
 
             <!-- 柱 2：分子结构表征 -->
             <rect x="376" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="411" y="218" text-anchor="middle" class="op-small" style="font-size:14.5px">分子结构</text>
-            <text x="411" y="240" text-anchor="middle" class="op-small" style="font-size:14.5px">表征</text>
+            <text x="411" y="218" text-anchor="middle" class="op-small" style="font-size:16px">分子结构</text>
+            <text x="411" y="240" text-anchor="middle" class="op-small" style="font-size:16px">表征</text>
 
             <!-- 柱 3：特征选择与降维 -->
             <rect x="462" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="497" y="218" text-anchor="middle" class="op-small" style="font-size:14.5px">特征选择</text>
-            <text x="497" y="240" text-anchor="middle" class="op-small" style="font-size:14.5px">与降维</text>
+            <text x="497" y="218" text-anchor="middle" class="op-small" style="font-size:16px">特征选择</text>
+            <text x="497" y="240" text-anchor="middle" class="op-small" style="font-size:16px">与降维</text>
 
             <!-- 柱 4：模型构建与训练 -->
             <rect x="548" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="583" y="218" text-anchor="middle" class="op-small" style="font-size:14.5px">模型构建</text>
-            <text x="583" y="240" text-anchor="middle" class="op-small" style="font-size:14.5px">与训练</text>
+            <text x="583" y="218" text-anchor="middle" class="op-small" style="font-size:16px">模型构建</text>
+            <text x="583" y="240" text-anchor="middle" class="op-small" style="font-size:16px">与训练</text>
 
             <!-- 柱 5：模型评估与验证 -->
             <rect x="634" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="669" y="218" text-anchor="middle" class="op-small" style="font-size:14.5px">模型评估</text>
-            <text x="669" y="240" text-anchor="middle" class="op-small" style="font-size:14.5px">与验证</text>
+            <text x="669" y="218" text-anchor="middle" class="op-small" style="font-size:16px">模型评估</text>
+            <text x="669" y="240" text-anchor="middle" class="op-small" style="font-size:16px">与验证</text>
 
-            <!-- 柱 6：适用域定义 -->
+            <!-- 柱 6：应用域定义 -->
             <rect x="720" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="755" y="218" text-anchor="middle" class="op-small" style="font-size:14.5px">适用域</text>
-            <text x="755" y="240" text-anchor="middle" class="op-small" style="font-size:14.5px">定义</text>
+            <text x="755" y="218" text-anchor="middle" class="op-small" style="font-size:16px">应用域</text>
+            <text x="755" y="240" text-anchor="middle" class="op-small" style="font-size:16px">定义</text>
+
+            <!-- 柱间步骤箭头 -->
+            <path d="M362 230h8" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M448 230h8" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M534 230h8" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M620 230h8" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M706 230h8" class="op-flow" marker-end="url(#as-arrow)"/>
 
             <!-- ===== 应用层 ===== -->
             <rect x="840" y="20" width="240" height="380" rx="12" class="op-box"/>
@@ -170,8 +177,9 @@
             <text x="960" y="276" text-anchor="middle" class="op-small" style="font-size:16.5px">环境管理</text>
 
             <!-- 模型 → 应用分流 -->
-            <path d="M790 230h58" class="op-flow"/>
-            <path d="M848 119v152" class="op-flow"/>
+            <path d="M790 230H848V210" class="op-flow"/>
+            <path d="M848 119V210" class="op-flow"/>
+            <path d="M848 210V271" class="op-flow"/>
             <path d="M848 119h12" class="op-flow" marker-end="url(#as-arrow)"/>
             <path d="M848 195h12" class="op-flow" marker-end="url(#as-arrow)"/>
             <path d="M848 271h12" class="op-flow" marker-end="url(#as-arrow)"/>
@@ -181,7 +189,7 @@
             <text x="540" y="440" text-anchor="middle" class="op-small" style="font-size:15px;fill:var(--fg-secondary)">数据反馈与模型迭代闭环</text>
           </svg>
         </div>
-        <figcaption class="op-caption">依据论文技术流程图重绘。数据层汇聚公共数据库、监管数据、文献挖掘与高通量实验四类来源，经模型层六个环节（数据采集与处理、分子结构表征、特征选择与降维、模型构建与训练、模型评估与验证、适用域定义）完成 RF/GNN/Transformer 等算法建模，输出分流至药物研发、化妆品评估与环境管理三大应用场景，并通过数据反馈与模型迭代形成闭环。</figcaption>
+        <figcaption class="op-caption">依据论文技术流程图重绘。数据层汇聚公共数据库、监管数据、文献挖掘与高通量实验四类来源，经模型层六个环节（数据采集与处理、分子结构表征、特征选择与降维、模型构建与训练、模型评估与验证、应用域定义）完成 RF/GNN/Transformer 等算法建模，输出分流至药物研发、化妆品评估与环境管理三大应用场景，并通过数据反馈与模型迭代形成闭环。</figcaption>
       </figure>
     </section>
 
