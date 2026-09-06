@@ -1,0 +1,37 @@
+.mixture-architecture {
+  --mx-blue: #63b3f5;
+  --mx-teal: #63ceb2;
+  --mx-purple: #b6a1e7;
+  --mx-panel: #0b0d10;
+  --mx-wire: #94a5b8;
+  max-width: 46rem;
+  padding: 20px;
+}
+:root[data-theme="light"] .mixture-architecture {
+  --mx-blue: #2278b9;
+  --mx-teal: #25816c;
+  --mx-purple: #8562b5;
+  --mx-panel: #fcfdfe;
+  --mx-wire: #718293;
+}
+#mixture-architecture-heading { scroll-margin-top: 90px; }
+.mixture-architecture-scroll { overflow-x: auto; overscroll-behavior-x: contain; border-radius: 6px; }
+.mixture-architecture-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.mixture-architecture-svg { min-width: 650px; font-family: var(--font-sans); }
+.mixture-architecture-svg text { fill: var(--fg-secondary); }
+.mixture-architecture-svg .mx-heading { font-size: 20px; font-weight: 500; fill: var(--fg); }
+.mixture-architecture-svg .mx-label { font-size: 20px; fill: var(--fg); font-weight: 500; }
+.mixture-architecture-svg .mx-small { font-size: 17px; fill: var(--fg-secondary); }
+.mixture-architecture-svg .mx-option { font-size: 17px; fill: var(--fg); }
+.mixture-architecture-svg .mx-math { font-size: 24px; fill: var(--fg); }
+.mixture-architecture-svg .mx-formula { font-size: 22px; fill: var(--fg); }
+.mixture-architecture-svg .mx-plus { font-size: 38px; fill: var(--mx-purple); }
+.mixture-architecture-svg .mx-panel { fill: var(--mx-panel); stroke: var(--divider-strong); }
+.mixture-architecture-svg .mx-flow { fill: none; stroke: var(--mx-blue); stroke-width: 2; }
+.mixture-architecture-svg .mx-teal-flow { stroke: var(--mx-teal); }
+.mixture-architecture-svg .mx-descriptor { fill: var(--mx-purple); fill-opacity: .1; stroke: var(--mx-purple); stroke-opacity: .45; }
+.mixture-architecture-svg .mx-model { fill: var(--mx-panel); stroke: var(--divider-strong); }
+.mixture-architecture-svg .mx-selected { fill: var(--mx-blue); fill-opacity: .12; stroke: var(--mx-blue); stroke-width: 1.4; }
+.mixture-architecture-svg .mx-output { font-size: 23px; fill: var(--fg); font-weight: 500; }
+.mixture-architecture-caption { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider); color: var(--fg-muted); font-size: 13px; line-height: 1.8; }
+@media (max-width: 600px) { .mixture-architecture { padding: 16px; } }

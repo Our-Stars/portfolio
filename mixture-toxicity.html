@@ -15,6 +15,7 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mixture-architecture.css">
 </head>
 <body data-nav="research">
 
@@ -63,6 +64,75 @@
         表征层比较 Uni-Mol 学习表征与 Morgan、MACCS 等指纹；
         建模层比较 LightGBM、XGBoost、随机森林等算法。
       </p>
+
+      <figure class="figure mixture-architecture">
+        <div class="figure-header">
+          <span class="figure-title" id="mixture-architecture-heading">二元混合物 · 建模架构</span>
+          <span class="figure-meta">MIXTURE TOXICITY MODELING</span>
+        </div>
+        <div class="mixture-architecture-scroll" tabindex="0" role="region" aria-label="混合物建模架构图，小屏可横向滚动">
+          <svg class="figure-svg mixture-architecture-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 500" role="img" aria-labelledby="mixture-svg-title mixture-svg-desc">
+            <title id="mixture-svg-title">从文献数据到二元混合物毒性预测</title>
+            <desc id="mixture-svg-desc">依据流程图 A、B、C 重绘。A：收集文献中的单体分子结构、摩尔分数和混合物实验毒性。B：两种单体的同类表征分别乘以摩尔分数 p1 和 p2 后逐元素相加，形成混合物描述符，p1 加 p2 等于 1。C：比较 Uni-Mol、MixedFP、Morgan、MACCS 四种表征与 RF、支持向量回归、XGBoost、LightGBM、MLP、线性回归六类算法的组合。突出显示 Uni-Mol 与 LightGBM 路线，输出混合物 pEC50 预测值。图中模型为候选比较，并非联合集成。</desc>
+            <defs>
+              <marker id="mx-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 8 5 0 9" fill="var(--mx-blue)"/></marker>
+              <marker id="mx-teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 8 5 0 9" fill="var(--mx-teal)"/></marker>
+            </defs>
+            <text x="20" y="32" class="mx-heading">(A) 数据收集</text>
+            <text x="260" y="32" class="mx-heading">(B) 描述符构建</text>
+            <text x="548" y="32" class="mx-heading">(C) 模型构建</text>
+            <rect x="20" y="64" width="200" height="366" rx="10" class="mx-panel"/>
+            <rect x="260" y="64" width="248" height="366" rx="10" class="mx-panel"/>
+            <rect x="548" y="64" width="330" height="366" rx="10" class="mx-panel"/>
+
+            <g transform="translate(64 102)" fill="none" stroke="var(--fg-secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="5" width="32" height="43" rx="3"/><rect width="32" height="43" rx="3" fill="var(--mx-panel)"/>
+              <path d="M7 10 H25 M7 18 H25 M7 26 H16 M7 34 H25"/>
+            </g>
+            <text x="114" y="132" class="mx-label">文献</text>
+            <path d="M120 164 V190" class="mx-flow" marker-end="url(#mx-arrow)"/>
+            <g transform="translate(34 216) scale(.65)" fill="none" stroke="var(--mx-teal)" stroke-width="2"><path d="M12 30 40 14 68 30 68 63 40 79 12 63 Z M68 30 95 14 120 30 M40 79 40 104 M95 14 95 0"/><circle cx="12" cy="30" r="4" fill="var(--mx-teal)"/><circle cx="40" cy="14" r="4" fill="var(--mx-teal)"/><circle cx="68" cy="30" r="4" fill="var(--mx-teal)"/><circle cx="68" cy="63" r="4" fill="var(--mx-teal)"/><circle cx="40" cy="79" r="4" fill="var(--mx-teal)"/><circle cx="12" cy="63" r="4" fill="var(--mx-teal)"/><circle cx="95" cy="14" r="4" fill="var(--mx-teal)"/><circle cx="120" cy="30" r="4" fill="var(--mx-teal)"/><circle cx="40" cy="104" r="4" fill="var(--mx-teal)"/></g>
+            <g transform="translate(129 216) scale(.65)" fill="none" stroke="var(--mx-blue)" stroke-width="2"><path d="M12 30 40 14 68 30 68 63 40 79 12 63 Z M68 30 95 14 120 30 M40 79 40 104 M12 30 0 9"/><circle cx="12" cy="30" r="4" fill="var(--mx-blue)"/><circle cx="40" cy="14" r="4" fill="var(--mx-blue)"/><circle cx="68" cy="30" r="4" fill="var(--mx-blue)"/><circle cx="68" cy="63" r="4" fill="var(--mx-blue)"/><circle cx="40" cy="79" r="4" fill="var(--mx-blue)"/><circle cx="12" cy="63" r="4" fill="var(--mx-blue)"/><circle cx="95" cy="14" r="4" fill="var(--mx-blue)"/><circle cx="120" cy="30" r="4" fill="var(--mx-blue)"/><circle cx="40" cy="104" r="4" fill="var(--mx-blue)"/></g>
+            <text x="76" y="312" text-anchor="middle" class="mx-label">组分 1</text>
+            <text x="170" y="312" text-anchor="middle" class="mx-label">组分 2</text>
+            <text x="76" y="343" text-anchor="middle" class="mx-math">p<tspan baseline-shift="sub" font-size="14">1</tspan></text>
+            <text x="170" y="343" text-anchor="middle" class="mx-math">p<tspan baseline-shift="sub" font-size="14">2</tspan></text>
+            <text x="120" y="380" text-anchor="middle" class="mx-small">分子结构 · 摩尔分数</text>
+            <text x="120" y="407" text-anchor="middle" class="mx-small">混合物实验毒性</text>
+            <path d="M226 248 H251" class="mx-flow" marker-end="url(#mx-arrow)"/>
+
+            <text x="324" y="108" text-anchor="middle" class="mx-small">单体表征 z<tspan baseline-shift="sub" font-size="12">1</tspan></text>
+            <text x="444" y="108" text-anchor="middle" class="mx-small">单体表征 z<tspan baseline-shift="sub" font-size="12">2</tspan></text>
+            <rect x="281" y="126" width="15" height="22" rx="2" fill="var(--mx-teal)" opacity="0.45"/><rect x="299" y="126" width="15" height="22" rx="2" fill="var(--mx-teal)" opacity="0.75"/><rect x="317" y="126" width="15" height="22" rx="2" fill="var(--mx-teal)" opacity="1"/><rect x="335" y="126" width="15" height="22" rx="2" fill="var(--mx-teal)" opacity="0.55"/><rect x="353" y="126" width="15" height="22" rx="2" fill="var(--mx-teal)" opacity="0.85"/><rect x="401" y="126" width="15" height="22" rx="2" fill="var(--mx-blue)" opacity="0.45"/><rect x="419" y="126" width="15" height="22" rx="2" fill="var(--mx-blue)" opacity="0.75"/><rect x="437" y="126" width="15" height="22" rx="2" fill="var(--mx-blue)" opacity="1"/><rect x="455" y="126" width="15" height="22" rx="2" fill="var(--mx-blue)" opacity="0.55"/><rect x="473" y="126" width="15" height="22" rx="2" fill="var(--mx-blue)" opacity="0.85"/>
+            <text x="324" y="182" text-anchor="middle" class="mx-math">× p<tspan baseline-shift="sub" font-size="14">1</tspan></text>
+            <text x="444" y="182" text-anchor="middle" class="mx-math">× p<tspan baseline-shift="sub" font-size="14">2</tspan></text>
+            <path d="M327 202 367 232" class="mx-flow mx-teal-flow" marker-end="url(#mx-teal-arrow)"/>
+            <path d="M441 202 401 232" class="mx-flow" marker-end="url(#mx-arrow)"/>
+            <text x="384" y="253" text-anchor="middle" class="mx-plus">+</text>
+            <path d="M384 267 V288" class="mx-flow" marker-end="url(#mx-arrow)"/>
+            <rect x="342" y="299" width="15" height="22" rx="2" fill="var(--mx-purple)" opacity="0.45"/><rect x="360" y="299" width="15" height="22" rx="2" fill="var(--mx-purple)" opacity="0.75"/><rect x="378" y="299" width="15" height="22" rx="2" fill="var(--mx-purple)" opacity="1"/><rect x="396" y="299" width="15" height="22" rx="2" fill="var(--mx-purple)" opacity="0.55"/><rect x="414" y="299" width="15" height="22" rx="2" fill="var(--mx-purple)" opacity="0.85"/>
+            <text x="384" y="351" text-anchor="middle" class="mx-label">混合物描述符</text>
+            <text x="384" y="388" text-anchor="middle" class="mx-formula">z<tspan baseline-shift="sub" font-size="12">mix</tspan><tspan baseline-shift="baseline"> = p₁z₁ + p₂z₂</tspan></text>
+            <text x="384" y="411" text-anchor="middle" class="mx-small">p₁ + p₂ = 1</text>
+            <path d="M514 248 H539" class="mx-flow" marker-end="url(#mx-arrow)"/>
+
+            <text x="620" y="94" text-anchor="middle" class="mx-small">混合物表征</text>
+            <path d="M678 157 764 114" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 157 764 168" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 157 764 222" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 157 764 276" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 157 764 330" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 157 764 384" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 217 764 114" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 217 764 168" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 217 764 222" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 217 764 276" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 217 764 330" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 217 764 384" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 277 764 114" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 277 764 168" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 277 764 222" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 277 764 276" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 277 764 330" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 277 764 384" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 337 764 114" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 337 764 168" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 337 764 222" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 337 764 276" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 337 764 330" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/><path d="M678 337 764 384" fill="none" stroke="var(--mx-wire)" stroke-width="1" opacity=".48"/>
+            <path d="M678 157 764 276" class="mx-flow"/>
+            <rect x="562" y="137" width="116" height="40" rx="5" class="mx-selected"/><text x="620" y="163" text-anchor="middle" class="mx-option">Uni-Mol</text><rect x="562" y="197" width="116" height="40" rx="5" class="mx-descriptor"/><text x="620" y="223" text-anchor="middle" class="mx-option">MixedFP</text><rect x="562" y="257" width="116" height="40" rx="5" class="mx-descriptor"/><text x="620" y="283" text-anchor="middle" class="mx-option">Morgan</text><rect x="562" y="317" width="116" height="40" rx="5" class="mx-descriptor"/><text x="620" y="343" text-anchor="middle" class="mx-option">MACCS</text>
+            <rect x="764" y="96" width="98" height="36" rx="5" class="mx-model"/><text x="813" y="120" text-anchor="middle" class="mx-option">RF</text><rect x="764" y="150" width="98" height="36" rx="5" class="mx-model"/><text x="813" y="174" text-anchor="middle" class="mx-option">SVM / SVR</text><rect x="764" y="204" width="98" height="36" rx="5" class="mx-model"/><text x="813" y="228" text-anchor="middle" class="mx-option">XGBoost</text><rect x="764" y="258" width="98" height="36" rx="5" class="mx-selected"/><text x="813" y="282" text-anchor="middle" class="mx-option">LightGBM</text><rect x="764" y="312" width="98" height="36" rx="5" class="mx-model"/><text x="813" y="336" text-anchor="middle" class="mx-option">MLP</text><rect x="764" y="366" width="98" height="36" rx="5" class="mx-model"/><text x="813" y="390" text-anchor="middle" class="mx-option">LR</text>
+            <text x="713" y="456" text-anchor="middle" class="mx-small">表征 × 算法：比较后选择模型</text>
+            <path d="M867 276 H908" class="mx-flow" marker-end="url(#mx-arrow)"/>
+            <text x="958" y="240" text-anchor="middle" class="mx-small">预测输出</text>
+            <rect x="918" y="254" width="80" height="45" rx="8" class="mx-selected"/>
+            <text x="958" y="283" text-anchor="middle" class="mx-output">pEC<tspan baseline-shift="sub" font-size="14">50</tspan></text>
+            <text x="958" y="331" text-anchor="middle" class="mx-label">混合物</text>
+            <text x="958" y="357" text-anchor="middle" class="mx-label">毒性预测</text>
+            <text x="20" y="486" class="mx-small">单体结构 + 混合比例 → 混合物表征 → 回归模型 → pEC₅₀</text>
+          </svg>
+        </div>
+        <figcaption class="mixture-architecture-caption">依据流程图 A—C 重绘。按相同表征的对应维度进行比例加权，比较不同表征与回归算法，蓝色强调 Uni-Mol + LightGBM 主线；候选模型不表示集成。输出为混合物 pEC₅₀，分子结构与向量长度仅作示意。</figcaption>
+      </figure>
       <div class="project-tags">
         <span class="tag">Uni-Mol</span>
         <span class="tag">LightGBM</span>
