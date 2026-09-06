@@ -25,14 +25,14 @@
 .pka-interpretation-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 .pka-interpretation .figure-svg { min-width: 560px; }
 .pka-interpretation .aromatic, .pka-interpretation .atom-hot { animation: none; }
-.pka-interpretation .elem-label { fill: #0b0d10; font-size: 12px; font-weight: 600; }
-.pka-interpretation .lg-text, .pka-interpretation .contrib { font-size: 15px; }
-.pka-interpretation .figure-cap { font-size: 13px; fill: var(--fg-muted); }
+.pka-interpretation .elem-label { fill: #0b0d10; font-size: 8px; font-weight: 600; }
+.pka-interpretation .lg-text, .pka-interpretation .contrib { font-size: 10px; }
+.pka-interpretation .figure-cap { font-size: 9px; fill: var(--fg-muted); }
 .pka-architecture-svg { min-width: 620px; font-family: var(--font-sans); }
 .pka-architecture-svg text { fill: var(--fg-secondary); }
-.pka-architecture-svg .pa-kicker { font-family: var(--font-mono); font-size: 17px; fill: var(--fg-muted); }
-.pka-architecture-svg .pa-label { font-size: 20px; font-weight: 500; fill: var(--fg); }
-.pka-architecture-svg .pa-small { font-size: 17px; fill: var(--fg-secondary); }
+.pka-architecture-svg .pa-kicker { font-family: var(--font-mono); font-size: 11.5px; fill: var(--fg-muted); }
+.pka-architecture-svg .pa-label { font-size: 14px; font-weight: 500; fill: var(--fg); }
+.pka-architecture-svg .pa-small { font-size: 11.5px; fill: var(--fg-secondary); }
 .pka-architecture-svg .pa-panel { fill: var(--pa-panel); stroke: var(--divider-strong); }
 .pka-architecture-svg .pa-training-panel { fill: var(--pa-tint); stroke: var(--divider-strong); stroke-dasharray: 5 5; }
 .pka-architecture-svg .pa-pretrain { fill: var(--pa-blue); fill-opacity: .15; stroke: var(--pa-blue); stroke-opacity: .4; }
@@ -49,13 +49,13 @@
 .pka-architecture-svg .pa-layer-back { stroke-opacity: .2; }
 .pka-architecture-svg .pa-layer-mid { stroke-opacity: .35; }
 .pka-architecture-svg .pa-network-line { fill: none; stroke: var(--pa-network); stroke-width: 1.1; opacity: .7; }
-.pka-architecture-svg .pa-element { font-size: 14px; font-weight: 500; fill: var(--fg); }
+.pka-architecture-svg .pa-element { font-size: 9.5px; font-weight: 500; fill: var(--fg); }
 .pka-architecture-svg .pa-substructure { fill: none; stroke: var(--pa-purple); stroke-width: 1.5; }
 .pka-architecture-svg .pa-projection { fill: none; stroke: var(--fg-faint); stroke-width: 1; stroke-dasharray: 3 4; }
 .pka-architecture-svg .pa-bit-on { fill: var(--pa-blue); fill-opacity: .3; }
 .pka-architecture-svg .pa-bit-off { fill: var(--pa-blue); fill-opacity: .08; stroke: var(--divider-strong); }
-.pka-architecture-svg .pa-bit-label { font-family: var(--font-mono); font-size: 12px; fill: var(--fg-secondary); }
+.pka-architecture-svg .pa-bit-label { font-family: var(--font-mono); font-size: 8px; fill: var(--fg-secondary); }
 .pka-architecture-svg .pa-output { fill: var(--pa-tint); stroke: var(--pa-blue); }
-.pka-architecture-svg .pa-output-label { font-size: 22px; font-weight: 500; fill: var(--fg); }
+.pka-architecture-svg .pa-output-label { font-size: 15px; font-weight: 500; fill: var(--fg); }
 .pka-architecture-caption { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider); font-size: 13px; line-height: 1.8; color: var(--fg-muted); max-width: 68em; }
 @media (max-width: 600px) { .pka-page .detail-section .figure { padding: 16px; } }
