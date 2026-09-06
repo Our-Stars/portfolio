@@ -33,7 +33,7 @@
       <h1>二元混合物毒性预测</h1>
       <div class="detail-en">Mixture Toxicity</div>
       <div class="detail-meta">
-        <span class="status ongoing">已完成 · 探索性研究</span>
+        <span class="status ongoing">已完成</span>
         <span class="project-year">2022 — 2025</span>
       </div>
     </header>
@@ -179,7 +179,7 @@
         <li>机器学习回归明显优于经典参考模型的同任务表现（CA、IA 直接预测 pEC<sub>50</sub> 的测试集 R<sup>2</sup> 分别为 0.7317 和 0.7750）</li>
         <li>基于 CA 和 IA 的 rMDR 相互作用分类在测试集上均正确判断 19/21 个样本，Accuracy 均为 0.905，MCC 分别为 0.806 和 0.826，优于原文献 KKNN 分类器（16/21），与原文献最佳 RF 分类器持平</li>
         <li>Y 随机化检验中随机模型测试 R<sup>2</sup> 为负值（约 −0.42）、平均随机相关系数接近 0，cR<sup>2</sup><sub>p</sub> ≈ 0.947，说明原模型性能并非来自标签偶然相关</li>
-        <li>适用域分析（Williams plot）与基于组成比例的 CA/IA 偏离曲面为模型应用范围与相互作用趋势提供了探索性诊断</li>
+        <li>适用域分析（Williams plot）与基于组成比例的 CA/IA 偏离曲面为模型应用范围与相互作用趋势提供了补充诊断</li>
       </ul>
     </section>
 
@@ -188,16 +188,15 @@
       <p>
         除主线外，项目还探索了「t-SNE 降维 + K-means 聚类、分簇建模再合并预测」的路线：
         轮廓系数在 3 簇时最高（0.7227），但小样本进一步切分后簇内数据更少、过拟合风险上升，
-        合并预测也未形成可靠的增益证据，因此聚类路线仅作为探索性分析保留，未进入主模型。
+        合并预测也未形成可靠的增益证据，因此聚类路线作为独立于主模型的补充分析保留。
       </p>
     </section>
 
     <section class="detail-section">
-      <h2>当前状态与局限</h2>
+      <h2>局限与下一步</h2>
       <p>
-        本项目应准确定位为<strong>基于公开实验数据的混合毒性计算案例与内部验证工作流</strong>：
-        从结构表征、混合物回归到相互作用分类形成了一条可追溯的完整流程，
-        但结论边界需要明确——
+        本项目是一个完整的科研项目：<strong>基于公开实验数据，构建从结构表征、混合物回归到相互作用判定的计算工作流</strong>，
+        并对模型的适用范围做出明确界定——
       </p>
       <ul>
         <li>训练集与测试集共享全部 6 种化合物和 15 种二元组合，测试结果反映的是已知化学空间内不同配比的预测能力，不能等同于对新化合物、新组合或独立实验的外部验证</li>
@@ -214,7 +213,7 @@
     <section class="detail-section">
       <h2>关联成果</h2>
       <div class="related-row">
-        <a href="index.html#research">该项目为探索性研究，暂无关联论文</a>
+        <a href="index.html#research">该项目暂无关联论文</a>
         <span class="related-note">—</span>
       </div>
     </section>
