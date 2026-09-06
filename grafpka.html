@@ -38,37 +38,69 @@
     </header>
 
     <section class="detail-section">
-      <h2>研究问题</h2>
+      <h2>研究背景</h2>
       <p>
-        pK<sub>a</sub> 是影响分子溶解度、渗透性与蛋白结合的关键性质，实验测定难以覆盖快速增长的化学空间。
-        本项目研究如何在小分子 pK<sub>a</sub> 预测中同时兼顾精度与可解释性，使预测结果能够被化学家理解与信任。
+        pK<sub>a</sub> 对分子的 ADMET（吸收、分布、代谢、排泄与毒性）性质具有显著影响，
+        是药物研究中的重要指标。现有 pK<sub>a</sub> 预测方法可分为两类：
+        基于物理的方法依据物理定律计算，准确性与可靠性较高，但对算力需求大；
+        以 QSAR 为代表的经验方法则依赖数据驱动。
+        近年来图神经网络快速发展，在保持较高精度的同时算力需求更低，
+        已广泛应用于分子性质预测。
+      </p>
+      <p>
+        然而，多数研究致力于提升预测精度，忽略了模型的可解释性。
+        本项目的研究问题由此而来：<strong>如何在保证预测精度的前提下提升模型的可解释性，打开深度学习模型的"黑箱"。</strong>
       </p>
     </section>
 
     <section class="detail-section">
       <h2>我的贡献</h2>
       <ul>
-        <li>设计分子图与分子指纹的融合表征，以 AttentiveFP 与全连接层分别提取特征</li>
-        <li>构建大规模预测数据预训练与实验数据微调的迁移学习策略</li>
-        <li>建立酸性与碱性 pK<sub>a</sub> 两类预测模型</li>
-        <li>采用积分梯度法可视化原子与官能团对预测值的贡献方向与大小</li>
-        <li>完成外部验证、Y 随机化检验与应用域分析，评估模型可靠性</li>
+        <li>从相关研究中收集分子 pK<sub>a</sub> 数据，划分为酸性与碱性两个数据集，分别构建酸性和碱性 pK<sub>a</sub> 预测模型</li>
+        <li>设计分子图与分子指纹的多模态融合表征：以 AttentiveFP 从分子图中学习原子连接关系，以全连接层提取指纹中分子图不包含的结构信息，拼接后联合预测</li>
+        <li>构建大规模预测数据预训练与实验数据微调的迁移学习策略，提升模型泛化性能</li>
+        <li>依次完成外部验证、Y 随机化检验与应用域分析，系统评估模型的可靠性、鲁棒性与适用范围</li>
+        <li>引入积分梯度法进行可解释性分析，可视化原子及官能团对预测值的贡献方向与大小</li>
       </ul>
     </section>
 
     <section class="detail-section">
       <h2>方法与数据</h2>
       <p>
-        模型基于 PyTorch 实现，表征层融合分子图与指纹两条通路，训练采用两阶段迁移策略。
-        评估覆盖内部验证与外部测试集，并通过 Y 随机化与相似度分析检验模型稳健性与适用域。
+        <strong>数据。</strong>
+        酸性与碱性微调数据集分别包含 552 和 607 个独特骨架，其中仅来自 1—2 个分子的骨架分别占 76.99% 和 78.91%；
+        骨架云图与相似性热图显示两数据集平均相似度仅 0.112 和 0.099，表明数据多样性较高。
+        对预训练与微调数据在分子量（MW）、logP、拓扑极性表面积（TPSA）、氢键受体数（HBA）、
+        氢键供体数（HBD）和 pK<sub>a</sub> 六个维度的比较表明，预训练数据能够覆盖微调数据的多数特征分布，
+        有利于模型学习更广的化学空间；t-SNE 降维可视化进一步验证了数据集划分的合理性。
+      </p>
+      <p>
+        <strong>模型。</strong>
+        分子图经 AttentiveFP 提取连接关系特征，分子指纹经全连接层提取补充结构特征，
+        二者拼接后分别输出酸性和碱性 pK<sub>a</sub> 预测；
+        整体训练采用预训练—微调两阶段迁移学习策略，
+        完成后依次进行外部验证、Y 随机化检验、应用域分析与可解释性分析。
       </p>
       <div class="project-tags">
         <span class="tag">AttentiveFP</span>
         <span class="tag">Molecular Fingerprint</span>
         <span class="tag">Transfer Learning</span>
         <span class="tag">Integrated Gradients</span>
+        <span class="tag">External Validation</span>
+        <span class="tag">Y-Randomization</span>
         <span class="tag">Applicability Domain</span>
       </div>
+    </section>
+
+    <section class="detail-section">
+      <h2>关键结果</h2>
+      <ul>
+        <li>GraFpKa 在数据集上的 MAE 达到 0.708，pK<sub>a</sub> 预测达到先进水平</li>
+        <li>内部验证优于基线模型，证明融合分子指纹能够提升模型性能</li>
+        <li>四个外部验证集上 R<sup>2</sup> 分别达到 0.876、0.876、0.882 和 0.841，与同类模型相比具有较强竞争力</li>
+        <li>Y 随机化检验证明模型性能并非来自数据偶然性，模型鲁棒</li>
+        <li>应用域分析界定了模型可信预测的分子范围与覆盖率</li>
+      </ul>
     </section>
 
     <section class="detail-section">
@@ -121,13 +153,20 @@
           <text x="40" y="224" class="figure-cap">原子着色：对 pK<tspan dy="3" font-size="8.5">a</tspan><tspan dy="-3"> 预测值的边际贡献方向</tspan></text>
         </svg>
       </figure>
+      <p>
+        可解释性分析从两个角度展开：一是<strong>关键原子的捕捉</strong>——对 3-氨基-2-氟丁酸、
+        4-氨基-2-氟-5-甲基苯甲酸等分子的分析显示，模型能够定位决定 pK<sub>a</sub> 的关键原子；
+        二是<strong>微小变化的检测</strong>——对丁酸与 2-/3-/4-氟丁酸、丙-1-胺与不同位置氟代丙胺系列的比较显示，
+        模型能识别取代位置变化并给出一致的原子贡献解释。
+        与传统权重可视化方法相比，积分梯度能够进一步区分各原子或基团对 pK<sub>a</sub> 的影响方向（升高或降低）。
+      </p>
     </section>
 
     <section class="detail-section">
       <h2>当前状态</h2>
       <p>
-        研究论文已发表于 Journal of Pharmaceutical Analysis（第一作者），
-        相关软件已获得软件著作权登记。详细的性能数据将在正式文案中补充。
+        研究论文已发表于 Journal of Pharmaceutical Analysis（第一作者，DOI：10.1016/j.jpha.2024.101174），
+        相关软件已获得软件著作权登记（GraFpKa V1.0）。
       </p>
     </section>
 
@@ -138,7 +177,7 @@
         <span class="related-note">期刊论文 · 2025</span>
       </div>
       <div class="related-row">
-        <a href="software-grafpka.html">GraFpKa 小分子 pKa 预测及可解释性分析软件 V1.0</a>
+        <a href="software-grafpka.html">GraFpKa 小分子 pK<sub>a</sub> 预测及可解释性分析软件 V1.0</a>
         <span class="related-note">软件著作权 · 2025</span>
       </div>
     </section>
