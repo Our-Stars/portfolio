@@ -15,6 +15,7 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="nitrosamine-architecture.css">
 </head>
 <body data-nav="research">
 
@@ -38,41 +39,234 @@
     </header>
 
     <section class="detail-section">
-      <h2>研究问题</h2>
+      <h2>研究背景</h2>
       <p>
-        亚硝胺类杂质是药物质量控制中的重点风险物质，其 Ames 致突变性结果高度依赖
-        菌株类型与 S9 代谢条件。传统「一个化合物一个标签」的建模方式丢失了这些条件信息。
+        亚硝胺是一类具有 N–N=O 官能团的化合物，作为合成工艺副产物或降解产物在药品中广泛存在。
+        2018 年以来，缬沙坦、雷尼替丁等药品中相继检出 N-亚硝基二甲胺（NDMA）等小分子亚硝胺，
+        引发全球多轮药品召回；监管关注随之扩展至药物活性物质相关亚硝胺（NDSRI）——
+        由药物结构中的胺基在工艺过程中亚硝化生成、普遍缺乏毒理数据的一类杂质。
+      </p>
+      <p>
+        亚硝胺多为前致突变剂，需经细胞色素 P450 酶（CYP2E1、CYP2C19、CYP2B6、CYP2A6、CYP3A4 等亚型）
+        的 α-位羟基化代谢活化后，方能与 DNA 烷基化而表现出致突变性——
+        这种代谢依赖性正是 Ames 试验中 S9 组分（大鼠 / 仓鼠肝微粒体）与测试菌株共同决定实验结果的原因。
+        监管层面，ICH M7 及欧美指南引入了致癌效力分类方法（CPCA）：
+        依据 α-碳取代特征将亚硝胺划分为 5 个效力类别、对应递增的可接受摄入量（18–1500 ng/day），
+        并通过整合定量构效预测、CYP 结合分析与 TD<sub>50</sub> 数据的决策树辅助归类。
+      </p>
+      <p>
+        亚硝胺的基因毒性评估以细菌回复突变试验（Ames 试验）为金标准，
+        监管机构并推荐采用更灵敏的增强型 Ames 试验（EAT，30 分钟预孵育法）——
+        但完整试验周期长、成本高，难以覆盖数量庞大的 NDSRI 候选空间。
+        现有计算工具各有局限：面向 NDSRI 的专有 QSAR 模型受制于极小的公开训练集
+        （约 46 个分子、其中阴性样本仅 5 个）；基于专家经验的规则模型与商业模型的适用域和透明度有限，
+        在亚硝胺化学空间内的独立验证亦不充分；通用 Ames 预测模型则未针对亚硝胺的代谢活化机制与实验条件差异建模。
+      </p>
+      <p>
+        <strong>本项目目标：构建一个高质量、可溯源的亚硝胺 Ames 条件级数据集，
+        并在此基础上开发兼顾分子结构与实验条件（菌株 × S9）的致突变性预测模型，
+        为亚硝胺杂质的风险优先级排序提供计算支持。</strong>
       </p>
     </section>
 
     <section class="detail-section">
-      <h2>已完成工作</h2>
+      <h2>研究问题</h2>
       <ul>
-        <li>系统检索亚硝胺 Ames 试验公开文献，逐篇提取原始记录 3,893 条</li>
-        <li>标准化整合为 101 个化合物、1,550 条条件级记录的数据集</li>
-        <li>覆盖 8 种测试菌株与 5 种 S9 条件</li>
-        <li>每条数据保留原始文献溯源信息</li>
+        <li>如何从分散的文献与公开数据库中，构建每条记录均可溯源至原始文献的亚硝胺 Ames 条件级数据集？</li>
+        <li>以「分子结构 + 菌株 + S9 条件」为输入的条件级建模，能否优于「任一阳性即阳性」的化合物级聚合建模？</li>
+        <li>面向亚硝胺代谢活化机制的自研特征（α-碳羟基化反应性、位阻掩蔽程度、亚硝基电荷分布等），能否在分子指纹与描述符之外提供额外判别信息？</li>
+        <li>在小样本、类别不平衡的条件下，如何通过防泄漏的分组交叉验证与稳健评估纪律可靠地比较模型？</li>
       </ul>
     </section>
 
     <section class="detail-section">
-      <h2>正在进行</h2>
+      <h2>我的贡献</h2>
+      <ul>
+        <li>以 "nitrosamine + Ames / mutagenicity / Salmonella" 等关键词组合系统检索 PubMed、ScienceDirect 等数据库，并整合 HESI GTTC 等公开数据库中的亚硝胺 Ames 数据</li>
+        <li>建立逐篇文献提取规程：为每篇文献建立独立的提取规则档案，确保每条数据均可溯源至原始文献的具体表格</li>
+        <li>设计 15 字段的条件级记录结构，完整保留菌株、S9 条件、试验方法、溶剂、诱导剂等实验上下文</li>
+        <li>制定阴阳性判定与质量控制规则，逐文献核对判定阈值，四类排除均有记录可查</li>
+        <li>实现 RDKit 分子标准化管线与去重聚合策略，完成防数据泄漏设计，形成最终训练数据集</li>
+        <li>搭建条件级建模框架并开展特征、算法与评估研究（进行中），全流程脚本化并输出两份数据处理流程文档</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h2>数据集构建</h2>
       <p>
-        基于分子指纹、分子描述符及机制特征表征分子，比较多种机器学习方法在
-        条件级预测任务上的表现，探索合适的阈值策略。
+        <strong>数据来源与提取。</strong>
+        系统检索覆盖亚硝胺 Ames 试验的同行评议文献（含正文表格与补充材料），
+        对每篇文献建立独立的提取规则档案：数据定位（正文表 / 补充材料表）、字段提取路径、
+        该文献实际采用的阴阳性判定阈值、以及特例处理记录（重复试验冲突、疑似笔误的保守处理等）。
+        相比常见 Ames 数据集仅记录化合物级结论，本数据集保留了完整的实验条件上下文
+        （菌株 × S9 × 方法 × 溶剂 × 诱导剂）：
+      </p>
+      <ul>
+        <li>化合物标识：CAS 号、SMILES、化学名称</li>
+        <li>测试菌株（8 种）：TA98、TA100、TA1535、TA1537、TA97a、TA102、WP2 uvrA、WP2 uvrA pKM101</li>
+        <li>代谢活化条件（5 种）：S9 物种（大鼠 / 仓鼠）× S9 浓度（10% / 30%），及无 S9 对照</li>
+        <li>实验方法：预孵育法（30 / 60 min）与平板掺入法；溶剂（丙酮、DMSO、水、甲醇、乙醇等 9 种）；S9 诱导剂（PB/BNF、Aroclor 1254、Aroclor 等 4 类）</li>
+        <li>判定依据（各文献实际采用的阈值，如实记录）、阴阳性标签、DOI / URL 溯源信息</li>
+      </ul>
+      <p>
+        <strong>判定与质控。</strong>
+        按行业惯例逐文献核对判定标准：TA100、TA98、WP2 uvrA pKM101 的回复菌落数 ≥ 溶剂对照
+        <strong>2 倍</strong>，TA1535、TA1537 ≥ 溶剂对照 <strong>3 倍</strong>，
+        阳性判定同时要求剂量–响应上升趋势；个别文献的特殊阈值（如 TA102 的 1.5 倍）如实记录。
+        四类数据被排除：细胞毒性浓度下无法判读的数据、同一条件下重复试验结果矛盾的记录、
+        缺少 CAS 号无法唯一标识的化合物、疑似笔误的存疑数据（按保守原则整组剔除）——
+        <strong>每条排除均有记录可查</strong>。
+      </p>
+
+      <figure class="figure nitrosamine-architecture">
+        <div class="figure-header">
+          <span class="figure-title" id="nitrosamine-architecture-heading">条件级数据集 · 构建流程</span>
+          <span class="figure-meta">NITROSAMINE AMES DATASET</span>
+        </div>
+        <div class="nitrosamine-architecture-scroll" tabindex="0" role="region" aria-label="数据集构建流程图，窄屏可横向滚动">
+          <svg class="figure-svg nitrosamine-architecture-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 440" role="img" aria-labelledby="na-svg-title na-svg-desc">
+            <title id="na-svg-title">从文献检索到条件级训练数据集</title>
+            <desc id="na-svg-desc">四阶段流程：检索与提取得到 3,893 条条件级原始记录；质量控制逐文献核对 2 倍与 3 倍溶剂对照阈值并执行四类排除；RDKit 标准化后按化合物、菌株、S9 条件去重聚合，任一阳性即记阳性，矛盾标签整组剔除 34 组；最终得到 101 个化合物、1,550 条条件级记录，阳性 446 条占 28.8%，覆盖 8 菌株与 5 种 S9 条件。底部横条为贯穿全程的逐条溯源、防数据泄漏与可复现设计。</desc>
+            <defs>
+              <marker id="na-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--na-wire)"/></marker>
+            </defs>
+            <rect x="20" y="16" width="215" height="300" rx="10" fill="var(--na-panel)" stroke="var(--na-blue)" stroke-opacity=".55"/>
+            <rect x="275" y="16" width="215" height="300" rx="10" fill="var(--na-panel)" stroke="var(--na-teal)" stroke-opacity=".55"/>
+            <rect x="530" y="16" width="215" height="300" rx="10" fill="var(--na-panel)" stroke="var(--na-purple)" stroke-opacity=".55"/>
+            <rect x="785" y="16" width="215" height="300" rx="10" fill="var(--na-panel)" stroke="var(--na-amber)" stroke-opacity=".55"/>
+            <text x="36" y="47" class="na-heading" fill="var(--na-blue)">01 · 检索与提取</text>
+            <text x="291" y="47" class="na-heading" fill="var(--na-teal)">02 · 质量控制</text>
+            <text x="546" y="47" class="na-heading" fill="var(--na-purple)">03 · 标准化与整合</text>
+            <text x="801" y="47" class="na-heading" fill="var(--na-amber)">04 · 训练数据集</text>
+
+            <rect x="36" y="64" width="183" height="52" rx="7" fill="var(--na-blue)" fill-opacity=".09" stroke="var(--na-blue)" stroke-opacity=".5"/>
+            <text x="127.5" y="86" text-anchor="middle" class="na-label">系统文献检索</text>
+            <text x="127.5" y="105" text-anchor="middle" class="na-small">PubMed · ScienceDirect 等</text>
+            <rect x="36" y="128" width="183" height="52" rx="7" fill="var(--na-blue)" fill-opacity=".09" stroke="var(--na-blue)" stroke-opacity=".5"/>
+            <text x="127.5" y="150" text-anchor="middle" class="na-label">公开数据库整合</text>
+            <text x="127.5" y="169" text-anchor="middle" class="na-small">HESI GTTC 等</text>
+            <rect x="36" y="192" width="183" height="52" rx="7" fill="var(--na-blue)" fill-opacity=".09" stroke="var(--na-blue)" stroke-opacity=".5"/>
+            <text x="127.5" y="214" text-anchor="middle" class="na-label">逐篇提取 · 15 字段</text>
+            <text x="127.5" y="233" text-anchor="middle" class="na-small">每篇文献独立规则档案</text>
+            <path d="M36 258H219" stroke="var(--divider-strong)"/>
+            <text x="36" y="278" class="na-small">输出</text>
+            <text x="36" y="300" class="na-label" fill="var(--na-blue)">3,893 条条件级原始记录</text>
+
+            <rect x="291" y="64" width="183" height="52" rx="7" fill="var(--na-teal)" fill-opacity=".09" stroke="var(--na-teal)" stroke-opacity=".5"/>
+            <text x="382.5" y="86" text-anchor="middle" class="na-label">阴阳性判定核对</text>
+            <text x="382.5" y="105" text-anchor="middle" class="na-small">≥ 2× / 3× 溶剂对照 + 趋势</text>
+            <rect x="291" y="128" width="183" height="52" rx="7" fill="var(--na-teal)" fill-opacity=".09" stroke="var(--na-teal)" stroke-opacity=".5"/>
+            <text x="382.5" y="150" text-anchor="middle" class="na-label">特殊阈值如实记录</text>
+            <text x="382.5" y="169" text-anchor="middle" class="na-small">如 TA102 的 1.5 倍</text>
+            <rect x="291" y="192" width="183" height="52" rx="7" fill="var(--na-teal)" fill-opacity=".09" stroke="var(--na-teal)" stroke-opacity=".5"/>
+            <text x="382.5" y="214" text-anchor="middle" class="na-label">四类排除规则</text>
+            <text x="382.5" y="233" text-anchor="middle" class="na-small">毒性 · 矛盾 · 缺 CAS · 存疑</text>
+            <path d="M291 258H474" stroke="var(--divider-strong)"/>
+            <text x="291" y="278" class="na-small">全程留痕</text>
+            <text x="291" y="300" class="na-label" fill="var(--na-teal)">每条排除均有记录可查</text>
+
+            <rect x="546" y="64" width="183" height="52" rx="7" fill="var(--na-purple)" fill-opacity=".09" stroke="var(--na-purple)" stroke-opacity=".5"/>
+            <text x="637.5" y="86" text-anchor="middle" class="na-label">分子标准化 · RDKit</text>
+            <text x="637.5" y="105" text-anchor="middle" class="na-small">去盐 · 最大片段 · ≤ 1000 Da</text>
+            <rect x="546" y="128" width="183" height="52" rx="7" fill="var(--na-purple)" fill-opacity=".09" stroke="var(--na-purple)" stroke-opacity=".5"/>
+            <text x="637.5" y="150" text-anchor="middle" class="na-label">去重与聚合</text>
+            <text x="637.5" y="169" text-anchor="middle" class="na-small">任一阳性即记阳性</text>
+            <rect x="546" y="192" width="183" height="52" rx="7" fill="var(--na-purple)" fill-opacity=".09" stroke="var(--na-purple)" stroke-opacity=".5"/>
+            <text x="637.5" y="214" text-anchor="middle" class="na-label">矛盾标签处理</text>
+            <text x="637.5" y="233" text-anchor="middle" class="na-small">整组剔除 34 组</text>
+            <path d="M546 258H729" stroke="var(--divider-strong)"/>
+            <text x="546" y="278" class="na-small">全流程脚本化</text>
+            <text x="546" y="300" class="na-label" fill="var(--na-purple)">Python / RDKit</text>
+
+            <text x="801" y="100" class="na-stat" fill="var(--na-amber)">101</text>
+            <text x="801" y="120" class="na-small">化合物 · 标准化 SMILES 唯一</text>
+            <text x="801" y="160" class="na-stat" fill="var(--na-amber)">1,550</text>
+            <text x="801" y="180" class="na-small">条件级记录</text>
+            <text x="801" y="220" class="na-stat" fill="var(--na-amber)">446（28.8%）</text>
+            <text x="801" y="240" class="na-small">阳性记录</text>
+            <path d="M801 262H984" stroke="var(--divider-strong)"/>
+            <text x="801" y="284" class="na-label" fill="var(--na-amber)">8 菌株 × 5 种 S9 条件</text>
+            <text x="801" y="302" class="na-small">平均每化合物约 15 条</text>
+
+            <path d="M239 166H267" class="na-flow" marker-end="url(#na-arrow)"/>
+            <path d="M494 166H522" class="na-flow" marker-end="url(#na-arrow)"/>
+            <path d="M749 166H777" class="na-flow" marker-end="url(#na-arrow)"/>
+
+            <rect x="20" y="344" width="980" height="72" rx="10" fill="var(--na-panel)" stroke="var(--divider-strong)"/>
+            <text x="36" y="374" class="na-label">逐条溯源</text>
+            <text x="36" y="394" class="na-small">每条记录保留 DOI / URL</text>
+            <text x="360" y="374" class="na-label">防数据泄漏</text>
+            <text x="360" y="394" class="na-small">背景集（6,924 分子）剔除 41 个重叠分子</text>
+            <text x="700" y="374" class="na-label">流程文档 × 2</text>
+            <text x="700" y="394" class="na-small">详细版 / 简洁版 · 可复现可审计</text>
+            <path d="M363 344V322" class="na-flow" marker-end="url(#na-arrow)"/>
+            <path d="M612 344V322" class="na-flow" marker-end="url(#na-arrow)"/>
+          </svg>
+        </div>
+        <figcaption class="nitrosamine-architecture-caption">依据项目数据处理流程绘制。逐篇提取的 3,893 条条件级原始记录，经判定阈值核对与四类排除、RDKit 分子标准化、按「化合物 × 菌株 × S9 条件」去重聚合后，形成 101 个化合物、1,550 条条件级训练记录；结论同向的记录合并时任一阳性即记阳性，标签矛盾者整组剔除。底部横条为贯穿全程的溯源、防泄漏与可复现设计。</figcaption>
+      </figure>
+
+      <p>
+        <strong>标准化与整合。</strong>
+        SMILES 经 RDKit 管线标准化：解析 → 去盐 / 去混合物（保留最大有机片段）→ 去无机物 →
+        标准化 SMILES → 分子量筛选（≤ 1000 Da）。
+        同一（化合物 × 菌株 × S9 条件）下的多条记录，实验配置不同但结论同向的合并为一条
+        （<strong>任一阳性即记阳性</strong>，保留最保守的毒性结论），标签直接矛盾的整组剔除（34 组），
+        避免噪声标签进入训练集。
+        为迁移学习探索构建的通用分子背景数据集（6,924 个 Ames 阴阳性分子）
+        剔除了与亚硝胺集重叠的 41 个分子，确保化合物级信息隔离。
+      </p>
+      <dl class="na-facts">
+        <div><dt>101</dt><dd>化合物<br>标准化 SMILES 唯一</dd></div>
+        <div><dt>1,550</dt><dd>条件级记录<br>8 菌株 × 5 种 S9 条件</dd></div>
+        <div><dt>446 · 28.8%</dt><dd>阳性记录<br>平均每化合物约 15 条</dd></div>
+        <div><dt>3,893</dt><dd>条件级原始记录<br>清洗与整合前规模</dd></div>
+      </dl>
+      <p>
+        全流程以 Python / RDKit 脚本化，输出详细版与简洁版两份数据处理流程文档，保证可复现、可审计；
+        另建设 15.7 万条 × 87 字段的 Ames 原始记录储备库（多来源汇总、未清洗），作为后续数据扩展的候选池。
+      </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>建模探索（进行中）</h2>
+      <p>
+        <strong>任务形式。</strong>
+        条件级预测：P(Ames 阳性 | 分子结构, 菌株, S9 条件)。
+        初步对比显示，条件级建模的表现显著优于「任一阳性即阳性」的化合物级聚合建模，
+        说明实验条件（菌株 × 代谢活化）携带关键判别信息。
+      </p>
+      <p>
+        <strong>特征体系。</strong>
+        框架已搭建并持续优化：Morgan 分子指纹、MACCS 结构键、RDKit 分子描述符，
+        以及自研的亚硝胺<strong>机制特征</strong>——α-碳羟基化反应性、位阻掩蔽程度、亚硝基电荷分布等。
+      </p>
+      <p>
+        <strong>算法与评估纪律。</strong>
+        以 Logistic 回归、随机森林、XGBoost、LightGBM 四类模型为基线；
+        采用<strong>按化合物分组的分层交叉验证</strong>防止同系物跨集泄漏，
+        以 MCC 为主指标开展多种子重复评估与嵌套阈值分析。
+      </p>
+      <p>
+        正在开展：特征与超参数优化、决策阈值策略、迁移学习与多任务学习等方法的系统性对照评估，
+        以及外部验证方案设计。模型性能指标以后续实际结果为准。
       </p>
       <div class="project-tags">
         <span class="tag">Dataset Curation</span>
+        <span class="tag">Condition-Level Modeling</span>
         <span class="tag">Mechanistic Features</span>
         <span class="tag">QSAR</span>
-        <span class="tag">Condition-Level Modeling</span>
+        <span class="tag">Grouped CV</span>
+        <span class="tag">MCC</span>
       </div>
     </section>
 
     <section class="detail-section">
-      <h2>尚未完成</h2>
+      <h2>当前状态与下一步</h2>
       <p>
-        最终模型、外部验证与风险排序应用仍在推进中，相关性能指标以后续实际结果为准。
+        数据集建设阶段已完成：101 个化合物、1,550 条条件级记录，全流程可溯源、可复现。
+        建模阶段正在推进，重点方向为机制特征工程与模型稳健性评估；
+        后续将开展模型外部验证，并探索将预测模型应用于药物相关亚硝胺（NDSRI）的风险优先级排序。
       </p>
     </section>
 

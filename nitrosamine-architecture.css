@@ -1,0 +1,35 @@
+.nitrosamine-architecture {
+  --na-blue: #63b3f5;
+  --na-teal: #63ceb2;
+  --na-purple: #b6a1e7;
+  --na-amber: #e6b17c;
+  --na-panel: #0b0d10;
+  --na-wire: #94a5b8;
+  padding: 20px;
+}
+:root[data-theme="light"] .nitrosamine-architecture {
+  --na-blue: #2278b9;
+  --na-teal: #25816c;
+  --na-purple: #8562b5;
+  --na-amber: #9c642d;
+  --na-panel: #fcfdfe;
+  --na-wire: #718293;
+}
+#nitrosamine-architecture-heading { scroll-margin-top: 90px; }
+.nitrosamine-architecture-scroll { overflow-x: auto; overscroll-behavior-x: contain; border-radius: 6px; }
+.nitrosamine-architecture-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.nitrosamine-architecture-svg { min-width: 650px; font-family: var(--font-sans); }
+.nitrosamine-architecture-svg text { fill: var(--fg-secondary); }
+.nitrosamine-architecture-svg .na-heading { font-size: 14px; font-weight: 500; fill: var(--fg); }
+.nitrosamine-architecture-svg .na-label { font-size: 14px; fill: var(--fg); font-weight: 500; }
+.nitrosamine-architecture-svg .na-small { font-size: 11.5px; fill: var(--fg-secondary); }
+.nitrosamine-architecture-svg .na-stat { font-size: 22px; font-weight: 500; fill: var(--fg); }
+.nitrosamine-architecture-svg .na-flow { fill: none; stroke: var(--na-wire); stroke-width: 1.7; }
+.nitrosamine-architecture-caption { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider); color: var(--fg-muted); font-size: 13px; line-height: 1.8; }
+.na-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0; }
+.na-facts div { border: 1px solid var(--divider-strong); border-radius: 10px; padding: 18px; }
+.na-facts dt { color: var(--fg); font-size: 25px; font-weight: 500; margin-bottom: 8px; }
+.na-facts dd { margin: 0; font-size: 13px; color: var(--fg-secondary); line-height: 1.6; }
+@media (max-width: 860px) { .na-facts { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .na-facts { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .nitrosamine-architecture { padding: 16px; } }
