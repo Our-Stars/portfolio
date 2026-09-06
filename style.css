@@ -536,8 +536,6 @@ section { border-bottom: 1px solid var(--divider); }
 
 .project-row:last-child { border-bottom: 1px solid var(--divider); }
 
-.project-row:hover { background: var(--hover-bg); }
-
 .project-num {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -656,8 +654,6 @@ section { border-bottom: 1px solid var(--divider); }
 }
 
 .output-row:last-child { border-bottom: 1px solid var(--divider); }
-.output-row:hover { background: var(--hover-bg); }
-
 .output-year {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -802,8 +798,6 @@ section { border-bottom: 1px solid var(--divider); }
 }
 
 .related-row:last-child { border-bottom: 1px solid var(--divider); }
-.related-row:hover { background: var(--hover-bg); }
-
 .related-row a {
   font-size: 15px;
   font-weight: 500;
@@ -835,6 +829,15 @@ section { border-bottom: 1px solid var(--divider); }
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x pan-y;
   scrollbar-width: thin;
+}
+
+/* 仅在鼠标设备上显示悬停背景，避免触屏返回后残留灰色状态。 */
+@media (hover: hover) and (pointer: fine) {
+  .project-row:hover,
+  .output-row:hover,
+  .related-row:hover {
+    background: var(--hover-bg);
+  }
 }
 
 /* ============ 底部 CTA 与页脚 ============ */
