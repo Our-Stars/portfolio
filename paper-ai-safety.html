@@ -66,64 +66,122 @@
           <span class="figure-meta">REVIEW FRAMEWORK</span>
         </div>
         <div class="op-scroll" tabindex="0" role="region" aria-label="综述框架图，窄屏可横向滚动">
-          <svg class="figure-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-labelledby="as-svg-title as-svg-desc">
-            <title id="as-svg-title">从技术范式到智能毒理系统的综述框架</title>
-            <desc id="as-svg-desc">左侧为三个核心维度：数据基础、算法体系与模型可解释性，共同构成 AI 驱动安全性评估的技术范式；中间为药物研发、化妆品评估与环境新污染物治理等应用场景，技术角色从替代实验手段转向安全性赋能设计工具；右侧为国际监管框架的接受与规范化进展，以及可解释性、复杂体系评估、系统集成、伦理与标准化等关键挑战；最终汇聚为智能毒理系统的概念框架。</desc>
+          <svg class="figure-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" role="img" aria-labelledby="as-svg-title as-svg-desc">
+            <title id="as-svg-title">AI 驱动化学品安全性评估技术流程图</title>
+            <desc id="as-svg-desc">流程图分为三层：左侧数据层包含公共数据库、监管数据、文献挖掘和高通量实验四个数据来源，经汇总后流入中间模型层；模型层包含数据采集与处理、分子结构表征、特征选择与降维、模型构建与训练、模型评估与验证、适用域定义六个纵向环节，上方标注 RF、GNN、Transformer 等算法；模型输出分流至右侧应用层的药物研发、化妆品评估和环境管理三个场景；底部为数据反馈与模型迭代闭环，从应用层回流至数据层。</desc>
             <defs>
               <marker id="as-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
+              <marker id="as-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-blue)"/></marker>
             </defs>
 
-            <rect x="16" y="14" width="230" height="330" rx="10" class="op-box"/>
-            <text x="32" y="42" class="op-head" fill="var(--op-teal)">技术范式 · 3 个核心维度</text>
-            <rect x="32" y="58" width="198" height="66" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="131" y="82" text-anchor="middle" class="op-small">数据基础</text>
-            <text x="131" y="100" text-anchor="middle" class="op-small">毒理数据库 · 数据质量与共享</text>
-            <rect x="32" y="134" width="198" height="66" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="131" y="158" text-anchor="middle" class="op-small">算法体系</text>
-            <text x="131" y="176" text-anchor="middle" class="op-small">机器学习 · 深度学习模型</text>
-            <rect x="32" y="210" width="198" height="66" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="131" y="234" text-anchor="middle" class="op-small">模型可解释性</text>
-            <text x="131" y="252" text-anchor="middle" class="op-small">归因方法 · 机制关联</text>
-            <text x="32" y="310" class="op-small">计算毒理学研究进展</text>
-            <text x="32" y="330" class="op-small">与应用现状梳理</text>
+            <!-- ===== Data layer ===== -->
+            <rect x="20" y="20" width="210" height="380" rx="12" class="op-box"/>
+            <text x="125" y="50" text-anchor="middle" class="op-head" fill="var(--op-teal)">Data layer</text>
 
-            <rect x="296" y="14" width="230" height="330" rx="10" class="op-box"/>
-            <text x="312" y="42" class="op-head" fill="var(--op-blue)">典型应用场景</text>
-            <rect x="312" y="58" width="198" height="44" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="411" y="84" text-anchor="middle" class="op-small">药物研发</text>
-            <rect x="312" y="112" width="198" height="44" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="411" y="138" text-anchor="middle" class="op-small">化妆品安全性评估</text>
-            <rect x="312" y="166" width="198" height="44" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="411" y="192" text-anchor="middle" class="op-small">环境新污染物治理</text>
-            <rect x="312" y="228" width="198" height="80" rx="6" fill="var(--op-panel)" stroke="var(--divider-strong)" stroke-dasharray="5 4"/>
-            <text x="411" y="252" text-anchor="middle" class="op-small">角色转变</text>
-            <text x="411" y="272" text-anchor="middle" class="op-small">「替代实验手段」</text>
-            <text x="411" y="290" text-anchor="middle" class="op-small">→「安全性赋能设计工具」</text>
+            <!-- Public database -->
+            <rect x="40" y="72" width="170" height="48" rx="8" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".45"/>
+            <g transform="translate(52,82)" stroke="var(--op-teal)" stroke-width="1.6" fill="none">
+              <ellipse cx="14" cy="5" rx="12" ry="3.5"/>
+              <path d="M2 5v13c0 2 5.4 3.5 12 3.5s12-1.5 12-3.5V5"/>
+              <path d="M2 11.5c0 2 5.4 3.5 12 3.5s12-1.5 12-3.5"/>
+            </g>
+            <text x="92" y="95" class="op-small" style="font-size:12px">Public</text>
+            <text x="92" y="111" class="op-small" style="font-size:12px">database</text>
 
-            <rect x="576" y="14" width="308" height="330" rx="10" class="op-box"/>
-            <text x="592" y="42" class="op-head" fill="var(--op-amber)">监管框架与关键挑战</text>
-            <rect x="592" y="58" width="276" height="44" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
-            <text x="730" y="76" text-anchor="middle" class="op-small">国际监管框架对计算毒理学方法的</text>
-            <text x="730" y="93" text-anchor="middle" class="op-small">接受与规范化进展</text>
-            <rect x="592" y="112" width="130" height="36" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
-            <text x="657" y="134" text-anchor="middle" class="op-small">可解释性</text>
-            <rect x="738" y="112" width="130" height="36" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
-            <text x="803" y="134" text-anchor="middle" class="op-small">复杂体系评估</text>
-            <rect x="592" y="158" width="130" height="36" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
-            <text x="657" y="180" text-anchor="middle" class="op-small">系统集成</text>
-            <rect x="738" y="158" width="130" height="36" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
-            <text x="803" y="180" text-anchor="middle" class="op-small">伦理与标准化</text>
-            <rect x="592" y="216" width="276" height="66" rx="6" fill="var(--op-purple)" fill-opacity=".1" stroke="var(--op-purple)" stroke-opacity=".55"/>
-            <text x="730" y="240" text-anchor="middle" class="op-label" fill="var(--op-purple)">智能毒理系统</text>
-            <text x="730" y="260" text-anchor="middle" class="op-small">概念框架 · 系统参考与前瞻性思考</text>
-            <text x="592" y="316" class="op-small">为科学研究与监管应用提供参考</text>
+            <!-- Regulatory data -->
+            <rect x="40" y="136" width="170" height="48" rx="8" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".45"/>
+            <g transform="translate(52,146)" stroke="var(--op-teal)" stroke-width="1.6" fill="none">
+              <path d="M14 2l11 4v6.5c0 6-4.2 10.8-11 12.2-6.8-1.4-11-6.2-11-12.2V6z"/>
+              <path d="M9 13.5l3.5 3.5L20 8.5"/>
+            </g>
+            <text x="92" y="159" class="op-small" style="font-size:12px">Regulatory</text>
+            <text x="92" y="175" class="op-small" style="font-size:12px">data</text>
 
-            <path d="M254 160L288 160" class="op-flow" marker-end="url(#as-arrow)"/>
-            <path d="M534 160L568 160" class="op-flow" marker-end="url(#as-arrow)"/>
-            <path d="M730 286V326H131V326" fill="none" stroke="var(--op-wire)" stroke-width="1.7" stroke-dasharray="5 4"/>
+            <!-- Literature mining -->
+            <rect x="40" y="200" width="170" height="48" rx="8" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".45"/>
+            <g transform="translate(52,210)" stroke="var(--op-teal)" stroke-width="1.6" fill="none">
+              <path d="M14 4.5C10.2 1.8 4.5 1.8 2 4.5v16c2-2.2 6.2-2.8 12 0 5.8-2.8 10-2.2 12 0v-16c-2.5-2.7-8.2-2.7-12 0z"/>
+              <path d="M14 4.5v16"/>
+            </g>
+            <text x="92" y="223" class="op-small" style="font-size:12px">Literature</text>
+            <text x="92" y="239" class="op-small" style="font-size:12px">mining</text>
+
+            <!-- High-throughput experiment -->
+            <rect x="40" y="264" width="170" height="48" rx="8" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".45"/>
+            <g transform="translate(52,272)" stroke="var(--op-teal)" stroke-width="1.6" fill="none">
+              <path d="M9.5 2h9M11.5 2v7.5L6 21c-.9 1.5.2 3.2 1.9 3.2h12.2c1.7 0 2.8-1.7 1.9-3.2L16.5 9.5V2"/>
+            </g>
+            <text x="92" y="284" class="op-small" style="font-size:10.5px">High-throughput</text>
+            <text x="92" y="300" class="op-small" style="font-size:10.5px">experiment</text>
+
+            <!-- Data collection bracket -->
+            <path d="M210 96h10M210 160h10M210 224h10M210 288h10" class="op-flow"/>
+            <path d="M220 96v192" class="op-flow"/>
+            <path d="M220 192h32" class="op-flow" marker-end="url(#as-arrow)"/>
+
+            <!-- ===== Model layer ===== -->
+            <rect x="260" y="20" width="560" height="380" rx="12" class="op-box"/>
+            <text x="540" y="50" text-anchor="middle" class="op-head" fill="var(--op-blue)">Model layer</text>
+
+            <!-- Algorithm label + bracket -->
+            <text x="540" y="78" text-anchor="middle" class="op-small" style="font-size:12.5px;fill:var(--fg)">RF、GNN、Transformer</text>
+            <path d="M295 86v5h490v-5" fill="none" stroke="var(--op-blue)" stroke-width="1.4" stroke-opacity=".6"/>
+
+            <!-- Bar 1: Data collection & processing -->
+            <rect x="290" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="325" y="230" text-anchor="middle" class="op-small" style="font-size:11.5px" transform="rotate(-90 325 230)">Data collection &amp; processing</text>
+
+            <!-- Bar 2: Molecular structure representation -->
+            <rect x="376" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="411" y="230" text-anchor="middle" class="op-small" style="font-size:11.5px" transform="rotate(-90 411 230)">Molecular structure representation</text>
+
+            <!-- Bar 3: Feature selection & dimensionality reduction -->
+            <rect x="462" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="497" y="230" text-anchor="middle" class="op-small" style="font-size:11.5px" transform="rotate(-90 497 230)">Feature selection &amp; dimensionality reduction</text>
+
+            <!-- Bar 4: Model construction & training -->
+            <rect x="548" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="583" y="230" text-anchor="middle" class="op-small" style="font-size:11.5px" transform="rotate(-90 583 230)">Model construction &amp; training</text>
+
+            <!-- Bar 5: Model evaluation & validation -->
+            <rect x="634" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="669" y="230" text-anchor="middle" class="op-small" style="font-size:11.5px" transform="rotate(-90 669 230)">Model evaluation &amp; validation</text>
+
+            <!-- Bar 6: Applicability domain definition -->
+            <rect x="720" y="100" width="70" height="260" rx="8" fill="var(--op-blue)" fill-opacity=".14" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="755" y="230" text-anchor="middle" class="op-small" style="font-size:11.5px" transform="rotate(-90 755 230)">Applicability domain definition</text>
+
+            <!-- ===== Application layer ===== -->
+            <rect x="840" y="20" width="240" height="380" rx="12" class="op-box"/>
+            <text x="960" y="50" text-anchor="middle" class="op-head" fill="var(--op-purple)">Application layer</text>
+
+            <!-- Drug discovery -->
+            <rect x="865" y="92" width="190" height="54" rx="8" fill="var(--op-purple)" fill-opacity=".09" stroke="var(--op-purple)" stroke-opacity=".45"/>
+            <text x="960" y="125" text-anchor="middle" class="op-small" style="font-size:13px">Drug discovery</text>
+
+            <!-- Cosmetics assessment -->
+            <rect x="865" y="168" width="190" height="54" rx="8" fill="var(--op-purple)" fill-opacity=".09" stroke="var(--op-purple)" stroke-opacity=".45"/>
+            <text x="960" y="194" text-anchor="middle" class="op-small" style="font-size:13px">Cosmetics</text>
+            <text x="960" y="212" text-anchor="middle" class="op-small" style="font-size:13px">assessment</text>
+
+            <!-- Environmental management -->
+            <rect x="865" y="244" width="190" height="54" rx="8" fill="var(--op-purple)" fill-opacity=".09" stroke="var(--op-purple)" stroke-opacity=".45"/>
+            <text x="960" y="270" text-anchor="middle" class="op-small" style="font-size:13px">Environmental</text>
+            <text x="960" y="288" text-anchor="middle" class="op-small" style="font-size:13px">management</text>
+
+            <!-- Model → Application split -->
+            <path d="M790 230h58" class="op-flow"/>
+            <path d="M848 119v152" class="op-flow"/>
+            <path d="M848 119h12" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M848 195h12" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M848 271h12" class="op-flow" marker-end="url(#as-arrow)"/>
+
+            <!-- ===== Feedback closed loop ===== -->
+            <path d="M960 400v48H125v-44" fill="none" stroke="var(--op-blue)" stroke-width="2.2" stroke-opacity=".7" marker-end="url(#as-arrow-blue)"/>
+            <text x="540" y="440" text-anchor="middle" class="op-small" style="font-size:12.5px;fill:var(--fg-secondary)">Data feedback and model iteration closed loop</text>
           </svg>
         </div>
-        <figcaption class="op-caption">依据综述整体结构绘制。三个核心维度支撑技术范式演进，应用场景中完成技术角色转变的评述，结合监管进展与关键挑战，最终提出智能毒理系统的概念框架。</figcaption>
+        <figcaption class="op-caption">依据论文技术流程图重绘。数据层汇聚公共数据库、监管数据、文献挖掘与高通量实验四类来源，经模型层六个环节（数据采集与处理、分子结构表征、特征选择与降维、模型构建与训练、模型评估与验证、适用域定义）完成 RF/GNN/Transformer 等算法建模，输出分流至药物研发、化妆品评估与环境管理三大应用场景，并通过数据反馈与模型迭代形成闭环。</figcaption>
       </figure>
     </section>
 
