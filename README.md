@@ -1,5 +1,7 @@
 # Research Portfolio — 计算毒理学与科学智能体
 
+中文 | [English](./README.en.md)
+
 个人科研作品集静态网站。围绕四个科研项目与可核实的论文、书稿、教材、软件著作权成果，面向招聘方展示从数据整理、分子表征、预测建模，到模型解释、多源证据整合与科学智能体开发的完整研究能力。
 
 线上地址：<https://mornest.cn>
@@ -60,7 +62,9 @@ python3 -m http.server 8000
 ├── research-map.css        # 首页研究主线图
 ├── *-architecture.css      # 各架构图专属样式（主题变量 scoped）
 ├── output-figure.css       # 成果页图形共享样式
-└── images/                 # GraFpKa 软件截图
+├── images/                 # GraFpKa 软件截图
+├── README.md               # 中文说明（本文件）
+└── README.en.md            # English readme
 ```
 
 ## 版权
