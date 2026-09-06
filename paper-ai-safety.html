@@ -71,6 +71,7 @@
             <desc id="as-svg-desc">流程图分为三层：左侧数据层包含公共数据库、监管数据、文献挖掘和高通量实验四个数据来源，经汇总后流入中间模型层；模型层包含数据采集与处理、分子结构表征、特征选择与降维、模型构建与训练、模型评估与验证、应用域定义六个纵向环节，上方标注 RF、GNN、Transformer 等算法；模型输出分流至右侧应用层的药物研发、化妆品评估和环境管理三个场景；底部为数据反馈与模型迭代闭环，从应用层回流至数据层。</desc>
             <defs>
               <marker id="as-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
+              <marker id="as-arrow-sm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
               <marker id="as-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-blue)"/></marker>
             </defs>
 
@@ -113,7 +114,7 @@
             <!-- 数据汇总括号 -->
             <path d="M210 96h10M210 160h10M210 224h10M210 288h10" class="op-flow"/>
             <path d="M220 96v192" class="op-flow"/>
-            <path d="M220 192h66" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M220 192h58" class="op-flow" marker-end="url(#as-arrow)"/>
 
             <!-- ===== 模型层 ===== -->
             <rect x="260" y="20" width="560" height="380" rx="12" class="op-box"/>
@@ -154,11 +155,11 @@
             <text x="755" y="240" text-anchor="middle" class="op-small" style="font-size:16px">定义</text>
 
             <!-- 柱间步骤箭头 -->
-            <path d="M361 230h12" class="op-flow" marker-end="url(#as-arrow)"/>
-            <path d="M447 230h12" class="op-flow" marker-end="url(#as-arrow)"/>
-            <path d="M533 230h12" class="op-flow" marker-end="url(#as-arrow)"/>
-            <path d="M619 230h12" class="op-flow" marker-end="url(#as-arrow)"/>
-            <path d="M705 230h12" class="op-flow" marker-end="url(#as-arrow)"/>
+            <path d="M361 230h12" class="op-flow" marker-end="url(#as-arrow-sm)"/>
+            <path d="M447 230h12" class="op-flow" marker-end="url(#as-arrow-sm)"/>
+            <path d="M533 230h12" class="op-flow" marker-end="url(#as-arrow-sm)"/>
+            <path d="M619 230h12" class="op-flow" marker-end="url(#as-arrow-sm)"/>
+            <path d="M705 230h12" class="op-flow" marker-end="url(#as-arrow-sm)"/>
 
             <!-- ===== 应用层 ===== -->
             <rect x="840" y="20" width="240" height="380" rx="12" class="op-box"/>
@@ -177,7 +178,7 @@
             <text x="960" y="276" text-anchor="middle" class="op-small" style="font-size:16.5px">环境管理</text>
 
             <!-- 模型 → 应用分流 -->
-            <path d="M790 230H848" class="op-flow"/>
+            <path d="M790 195H848" class="op-flow"/>
             <path d="M848 119V271" class="op-flow"/>
             <path d="M848 119h12" class="op-flow" marker-end="url(#as-arrow)"/>
             <path d="M848 195h12" class="op-flow" marker-end="url(#as-arrow)"/>
