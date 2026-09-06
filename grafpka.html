@@ -15,6 +15,7 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="grafpka-architecture.css">
 </head>
 <body data-nav="research">
 
@@ -81,6 +82,101 @@
         整体训练采用预训练—微调两阶段迁移学习策略，
         完成后依次进行外部验证、Y 随机化检验、应用域分析与可解释性分析。
       </p>
+
+      <figure class="figure pka-architecture">
+        <div class="figure-header">
+          <span class="figure-title" id="pka-architecture-heading">GraFpKa · 模型架构</span>
+          <span class="figure-meta">MODEL CONSTRUCTION</span>
+        </div>
+        <div class="pka-architecture-scroll" tabindex="0" role="region" aria-label="GraFpKa 架构图，小屏可横向滚动">
+          <svg class="figure-svg pka-architecture-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 510" role="img" aria-labelledby="pka-svg-title pka-svg-desc">
+            <title id="pka-svg-title">GraFpKa 双分支融合预测架构</title>
+            <desc id="pka-svg-desc">参照论文图 B 重绘。分子图通过 AttentiveFP 提取图特征，分子指纹通过多层感知机提取指纹特征。两类特征拼接后输入预测网络，分别用于酸性或碱性 pKa 模型。整体训练采用预训练后微调的迁移学习策略。图中节点与维度仅作结构示意。</desc>
+            <defs>
+              <marker id="pka-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 8 5 0 9" class="pa-arrowhead"/></marker>
+              <marker id="pka-training-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 8 5 0 9" class="pa-training-arrowhead"/></marker>
+              <g id="pka-molecule">
+                <path d="M15 45 49 25 82 45 77 80 40 88 15 45 M49 25 50 2 M82 45 116 24 148 44 M116 24 116 0 M148 44 164 75 M40 88 24 117" class="pa-bond"/>
+                <circle cx="15" cy="45" r="6" class="pa-node-blue"/><circle cx="49" cy="25" r="6" class="pa-node-teal"/><circle cx="82" cy="45" r="6" class="pa-node-blue"/><circle cx="77" cy="80" r="6" class="pa-node-blue"/><circle cx="40" cy="88" r="6" class="pa-node-purple"/><circle cx="50" cy="2" r="5" class="pa-node-teal"/><circle cx="116" cy="24" r="6" class="pa-node-blue"/><circle cx="116" cy="0" r="5" class="pa-node-purple"/><circle cx="148" cy="44" r="6" class="pa-node-teal"/><circle cx="164" cy="75" r="5" class="pa-node-purple"/><circle cx="24" cy="117" r="5" class="pa-node-teal"/>
+              </g>
+              <g id="pka-vector-blue"><rect x="0" y="0" width="12" height="9" rx="1" class="pa-node-blue" opacity="1"/><rect x="0" y="12" width="12" height="9" rx="1" class="pa-node-teal" opacity="0.55"/><rect x="0" y="24" width="12" height="9" rx="1" class="pa-node-purple" opacity="0.8"/><rect x="0" y="36" width="12" height="9" rx="1" class="pa-node-blue" opacity="1"/><rect x="0" y="48" width="12" height="9" rx="1" class="pa-node-teal" opacity="0.55"/><rect x="0" y="60" width="12" height="9" rx="1" class="pa-node-purple" opacity="0.8"/><rect x="0" y="72" width="12" height="9" rx="1" class="pa-node-blue" opacity="1"/><rect x="0" y="84" width="12" height="9" rx="1" class="pa-node-teal" opacity="0.55"/></g>
+              <g id="pka-vector-teal"><rect x="0" y="0" width="12" height="9" rx="1" class="pa-node-teal" opacity="0.7"/><rect x="0" y="12" width="12" height="9" rx="1" class="pa-node-purple" opacity="1"/><rect x="0" y="24" width="12" height="9" rx="1" class="pa-node-blue" opacity="0.5"/><rect x="0" y="36" width="12" height="9" rx="1" class="pa-node-teal" opacity="0.7"/><rect x="0" y="48" width="12" height="9" rx="1" class="pa-node-purple" opacity="1"/><rect x="0" y="60" width="12" height="9" rx="1" class="pa-node-blue" opacity="0.5"/><rect x="0" y="72" width="12" height="9" rx="1" class="pa-node-teal" opacity="0.7"/><rect x="0" y="84" width="12" height="9" rx="1" class="pa-node-purple" opacity="1"/></g>
+              <g id="pka-dense"><path d="M0 0 58 16" class="pa-network-line"/><path d="M0 0 58 40" class="pa-network-line"/><path d="M0 0 58 64" class="pa-network-line"/><path d="M0 0 58 88" class="pa-network-line"/><path d="M0 24 58 16" class="pa-network-line"/><path d="M0 24 58 40" class="pa-network-line"/><path d="M0 24 58 64" class="pa-network-line"/><path d="M0 24 58 88" class="pa-network-line"/><path d="M0 48 58 16" class="pa-network-line"/><path d="M0 48 58 40" class="pa-network-line"/><path d="M0 48 58 64" class="pa-network-line"/><path d="M0 48 58 88" class="pa-network-line"/><path d="M0 72 58 16" class="pa-network-line"/><path d="M0 72 58 40" class="pa-network-line"/><path d="M0 72 58 64" class="pa-network-line"/><path d="M0 72 58 88" class="pa-network-line"/><path d="M0 96 58 16" class="pa-network-line"/><path d="M0 96 58 40" class="pa-network-line"/><path d="M0 96 58 64" class="pa-network-line"/><path d="M0 96 58 88" class="pa-network-line"/><path d="M58 16 112 28" class="pa-network-line"/><path d="M58 16 112 52" class="pa-network-line"/><path d="M58 16 112 76" class="pa-network-line"/><path d="M58 40 112 28" class="pa-network-line"/><path d="M58 40 112 52" class="pa-network-line"/><path d="M58 40 112 76" class="pa-network-line"/><path d="M58 64 112 28" class="pa-network-line"/><path d="M58 64 112 52" class="pa-network-line"/><path d="M58 64 112 76" class="pa-network-line"/><path d="M58 88 112 28" class="pa-network-line"/><path d="M58 88 112 52" class="pa-network-line"/><path d="M58 88 112 76" class="pa-network-line"/><circle cx="0" cy="0" r="4" class="pa-node-blue"/><circle cx="0" cy="24" r="4" class="pa-node-blue"/><circle cx="0" cy="48" r="4" class="pa-node-blue"/><circle cx="0" cy="72" r="4" class="pa-node-blue"/><circle cx="0" cy="96" r="4" class="pa-node-blue"/><circle cx="58" cy="16" r="4" class="pa-node-teal"/><circle cx="58" cy="40" r="4" class="pa-node-teal"/><circle cx="58" cy="64" r="4" class="pa-node-teal"/><circle cx="58" cy="88" r="4" class="pa-node-teal"/><circle cx="112" cy="28" r="4" class="pa-node-purple"/><circle cx="112" cy="52" r="4" class="pa-node-purple"/><circle cx="112" cy="76" r="4" class="pa-node-purple"/></g>
+            </defs>
+
+            <text x="20" y="25" class="pa-kicker">01 / 双分支表征</text>
+            <text x="606" y="25" class="pa-kicker">02 / 特征融合与预测</text>
+
+            <rect x="606" y="49" width="374" height="94" rx="10" class="pa-training-panel"/>
+            <text x="624" y="73" class="pa-small">整体训练策略 · Transfer learning</text>
+            <rect x="625" y="89" width="138" height="34" rx="5" class="pa-pretrain"/>
+            <text x="694" y="111" text-anchor="middle" class="pa-label">预训练</text>
+            <path d="M776 106 H817" class="pa-training-link" marker-end="url(#pka-training-arrow)"/>
+            <rect x="832" y="89" width="128" height="34" rx="5" class="pa-finetune"/>
+            <text x="896" y="111" text-anchor="middle" class="pa-label">微调</text>
+
+            <rect x="20" y="52" width="190" height="184" rx="10" class="pa-panel"/>
+            <use href="#pka-molecule" transform="translate(47 68) scale(.8)"/>
+            <text x="115" y="207" text-anchor="middle" class="pa-label">分子图</text>
+            <text x="115" y="225" text-anchor="middle" class="pa-small">Molecule graphs</text>
+            <path d="M218 146 H257" class="pa-flow" marker-end="url(#pka-arrow)"/>
+
+            <rect x="269" y="52" width="257" height="184" rx="10" class="pa-panel"/>
+            <g transform="translate(284 76)">
+              <rect x="0" y="0" width="130" height="105" rx="6" class="pa-layer pa-layer-back"/>
+              <use href="#pka-molecule" transform="translate(5 13) scale(.59)" opacity=".28"/>
+              <rect x="22" y="9" width="130" height="105" rx="6" class="pa-layer pa-layer-mid"/>
+              <use href="#pka-molecule" transform="translate(27 22) scale(.59)" opacity=".5"/>
+              <rect x="44" y="18" width="130" height="105" rx="6" class="pa-layer"/>
+              <use href="#pka-molecule" transform="translate(49 31) scale(.59)"/>
+            </g>
+            <path d="M466 148 H482" class="pa-flow" marker-end="url(#pka-arrow)"/>
+            <use href="#pka-vector-blue" transform="translate(494 99)"/>
+            <text x="397" y="207" text-anchor="middle" class="pa-label">AttentiveFP</text>
+            <text x="397" y="225" text-anchor="middle" class="pa-small">图特征提取</text>
+
+            <rect x="20" y="274" width="190" height="184" rx="10" class="pa-panel"/>
+            <use href="#pka-molecule" transform="translate(51 291) scale(.65)"/>
+            <circle cx="83" cy="307" r="15" class="pa-substructure"/>
+            <circle cx="135" cy="318" r="22" class="pa-substructure"/>
+            <path d="M83 328 67 375 M135 342 154 375" class="pa-projection"/>
+            <rect x="39" y="376" width="17" height="20" rx="2" class="pa-bit-off"/><text x="47.5" y="390" text-anchor="middle" class="pa-bit-label">0</text><rect x="58" y="376" width="17" height="20" rx="2" class="pa-bit-on"/><text x="66.5" y="390" text-anchor="middle" class="pa-bit-label">1</text><rect x="77" y="376" width="17" height="20" rx="2" class="pa-bit-off"/><text x="85.5" y="390" text-anchor="middle" class="pa-bit-label">0</text><rect x="96" y="376" width="17" height="20" rx="2" class="pa-bit-on"/><text x="104.5" y="390" text-anchor="middle" class="pa-bit-label">1</text><rect x="115" y="376" width="17" height="20" rx="2" class="pa-bit-on"/><text x="123.5" y="390" text-anchor="middle" class="pa-bit-label">1</text><rect x="134" y="376" width="17" height="20" rx="2" class="pa-bit-off"/><text x="142.5" y="390" text-anchor="middle" class="pa-bit-label">0</text><rect x="153" y="376" width="17" height="20" rx="2" class="pa-bit-on"/><text x="161.5" y="390" text-anchor="middle" class="pa-bit-label">1</text><rect x="172" y="376" width="17" height="20" rx="2" class="pa-bit-off"/><text x="180.5" y="390" text-anchor="middle" class="pa-bit-label">0</text>
+            <text x="115" y="430" text-anchor="middle" class="pa-label">分子指纹</text>
+            <text x="115" y="448" text-anchor="middle" class="pa-small">Fingerprints</text>
+            <path d="M218 367 H257" class="pa-flow" marker-end="url(#pka-arrow)"/>
+
+            <rect x="269" y="274" width="257" height="184" rx="10" class="pa-panel"/>
+            <use href="#pka-vector-teal" transform="translate(290 305)"/>
+            <use href="#pka-dense" transform="translate(321 305)"/>
+            <path d="M449 355 H482" class="pa-flow" marker-end="url(#pka-arrow)"/>
+            <use href="#pka-vector-teal" transform="translate(494 308)"/>
+            <text x="397" y="430" text-anchor="middle" class="pa-label">多层感知机 · MLP</text>
+            <text x="397" y="448" text-anchor="middle" class="pa-small">指纹特征提取</text>
+
+            <path d="M534 146 H554 Q568 146 568 160 V258 Q568 270 580 270 H612" class="pa-flow" marker-end="url(#pka-arrow)"/>
+            <path d="M534 367 H554 Q568 367 568 353 V302 Q568 290 580 290 H612" class="pa-flow" marker-end="url(#pka-arrow)"/>
+            <rect x="624" y="197" width="54" height="166" rx="7" class="pa-panel"/>
+            <use href="#pka-vector-blue" transform="translate(645 211) scale(1 .68)"/>
+            <use href="#pka-vector-teal" transform="translate(645 285) scale(1 .68)"/>
+            <path d="M634 278 H668" class="pa-projection"/>
+            <text x="651" y="389" text-anchor="middle" class="pa-label">特征拼接</text>
+            <text x="651" y="408" text-anchor="middle" class="pa-small">Concatenate</text>
+            <path d="M687 280 H721" class="pa-flow" marker-end="url(#pka-arrow)"/>
+
+            <rect x="733" y="197" width="147" height="166" rx="10" class="pa-panel"/>
+            <use href="#pka-dense" transform="translate(748 228) scale(.95)"/>
+            <text x="806" y="389" text-anchor="middle" class="pa-label">预测网络</text>
+            <text x="806" y="408" text-anchor="middle" class="pa-small">Fully connected</text>
+            <path d="M888 280 H916" class="pa-flow" marker-end="url(#pka-arrow)"/>
+            <rect x="926" y="258" width="54" height="44" rx="7" class="pa-output"/>
+            <text x="953" y="286" text-anchor="middle" class="pa-output-label">pK<tspan baseline-shift="sub" font-size="12">a</tspan></text>
+            <text x="953" y="328" text-anchor="middle" class="pa-small">酸性 / 碱性</text>
+            <text x="953" y="346" text-anchor="middle" class="pa-small">分别建模</text>
+            <text x="20" y="493" class="pa-small">分子连接关系 + 指纹结构信息 → 融合表征 → pK<tspan baseline-shift="sub" font-size="10">a</tspan> 预测</text>
+          </svg>
+        </div>
+        <figcaption class="pka-architecture-caption">依据论文图 B 重绘。两条分支的特征拼接后进入预测网络，酸性与碱性任务分别建模；预训练—微调策略应用于整体模型。图中分子、节点数量及向量长度仅作架构示意。</figcaption>
+      </figure>
       <div class="project-tags">
         <span class="tag">AttentiveFP</span>
         <span class="tag">Molecular Fingerprint</span>
