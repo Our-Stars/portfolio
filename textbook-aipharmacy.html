@@ -15,6 +15,7 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="output-figure.css">
 </head>
 <body data-nav="outputs">
 
@@ -47,6 +48,94 @@
         负责第 5-2 章第一节的内容规划、案例设计、撰写与修订。
         章节聚焦机器学习方法在 ADME 性质预测中的原理、流程与典型应用案例。
       </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>核心流程</h2>
+      <figure class="figure op-figure">
+        <div class="figure-header">
+          <span class="figure-title">ADME 性质预测模型构建流程</span>
+          <span class="figure-meta">MODELING WORKFLOW</span>
+        </div>
+        <div class="op-scroll" tabindex="0" role="region" aria-label="ADME 性质预测模型构建流程图，窄屏可横向滚动">
+          <svg class="figure-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" aria-labelledby="tb-svg-title tb-svg-desc">
+            <title id="tb-svg-title">ADME 性质预测模型的八个核心步骤</title>
+            <desc id="tb-svg-desc">两行流程，上行为数据收集、数据处理、分子表征、特征选择，下行为模型构建、模型评价、应用域分析、可解释性分析。数据收集来自 PubChem、DrugBank、ChEMBL、OCHEM 等数据库与文献；数据处理包括实验体系统一、化学合理性校验、去盐去无机、去重与标签一致性；分子表征包括指纹、描述符与分子图；特征选择过滤冗余；模型构建涵盖机器学习与深度学习算法及训练策略；模型评价分内部交叉验证与外部验证；应用域基于距离或相似性阈值；可解释性分析将黑箱变为白箱。</desc>
+            <defs>
+              <marker id="tb-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
+            </defs>
+
+            <rect x="16" y="20" width="196" height="150" rx="10" class="op-box"/>
+            <text x="32" y="48" class="op-head" fill="var(--op-teal)">① 数据收集</text>
+            <text x="32" y="76" class="op-small">PubChem · DrugBank</text>
+            <text x="32" y="96" class="op-small">ChEMBL · OCHEM</text>
+            <text x="32" y="116" class="op-small">公开发表的科学文献</text>
+            <text x="32" y="140" class="op-small">数据规模与质量决定</text>
+            <text x="32" y="158" class="op-small">模型性能上限</text>
+
+            <rect x="240" y="20" width="196" height="150" rx="10" class="op-box"/>
+            <text x="256" y="48" class="op-head" fill="var(--op-teal)">② 数据处理</text>
+            <text x="256" y="76" class="op-small">实验体系与方法统一</text>
+            <text x="256" y="96" class="op-small">化学合理性校验</text>
+            <text x="256" y="116" class="op-small">去盐 · 去无机 · 去重</text>
+            <text x="256" y="140" class="op-small">分类阈值 / 回归单位统一</text>
+            <text x="256" y="158" class="op-small">标签一致性处理</text>
+
+            <rect x="464" y="20" width="196" height="150" rx="10" class="op-box"/>
+            <text x="480" y="48" class="op-head" fill="var(--op-blue)">③ 分子表征</text>
+            <text x="480" y="76" class="op-small">分子指纹（MACCS 等）</text>
+            <text x="480" y="96" class="op-small">分子描述符（理化 · 拓扑）</text>
+            <text x="480" y="116" class="op-small">分子图（GNN 输入）</text>
+            <text x="480" y="140" class="op-small">连接化学与 AI 模型的</text>
+            <text x="480" y="158" class="op-small">桥梁</text>
+
+            <rect x="688" y="20" width="196" height="150" rx="10" class="op-box"/>
+            <text x="704" y="48" class="op-head" fill="var(--op-blue)">④ 特征选择</text>
+            <text x="704" y="76" class="op-small">过滤法 · 包装法</text>
+            <text x="704" y="96" class="op-small">嵌入法 · 经验方法</text>
+            <text x="704" y="120" class="op-small">避免维度灾难</text>
+            <text x="704" y="140" class="op-small">降低复杂度 · 防过拟合</text>
+
+            <rect x="688" y="230" width="196" height="150" rx="10" class="op-box"/>
+            <text x="704" y="258" class="op-head" fill="var(--op-blue)">⑤ 模型构建</text>
+            <text x="704" y="286" class="op-small">SVM · 随机森林</text>
+            <text x="704" y="306" class="op-small">XGBoost · LightGBM</text>
+            <text x="704" y="326" class="op-small">DNN · GNN · Transformer</text>
+            <text x="704" y="350" class="op-small">迁移 · 自监督 · 多任务学习</text>
+
+            <rect x="464" y="230" width="196" height="150" rx="10" class="op-box"/>
+            <text x="480" y="258" class="op-head" fill="var(--op-purple)">⑥ 模型评价</text>
+            <text x="480" y="286" class="op-small">内部验证：k 折交叉验证</text>
+            <text x="480" y="306" class="op-small">外部验证：独立数据集</text>
+            <text x="480" y="330" class="op-small">分类：Acc · F1 · AUC</text>
+            <text x="480" y="350" class="op-small">回归：R² · MAE · RMSE</text>
+
+            <rect x="240" y="230" width="196" height="150" rx="10" class="op-box"/>
+            <text x="256" y="258" class="op-head" fill="var(--op-amber)">⑦ 应用域分析</text>
+            <text x="256" y="286" class="op-small">距离 / 相似性阈值</text>
+            <text x="256" y="306" class="op-small">D = μ + Zσ</text>
+            <text x="256" y="330" class="op-small">界定可靠预测的</text>
+            <text x="256" y="350" class="op-small">化学空间范围</text>
+
+            <rect x="16" y="230" width="196" height="150" rx="10" class="op-box"/>
+            <text x="32" y="258" class="op-head" fill="var(--op-amber)">⑧ 可解释性分析</text>
+            <text x="32" y="286" class="op-small">将「黑箱」变为「白箱」</text>
+            <text x="32" y="306" class="op-small">归因到原子 / 子结构</text>
+            <text x="32" y="330" class="op-small">增加模型可信度</text>
+            <text x="32" y="350" class="op-small">辅助机制理解</text>
+
+            <path d="M212 95H232" class="op-flow" marker-end="url(#tb-arrow)"/>
+            <path d="M436 95H456" class="op-flow" marker-end="url(#tb-arrow)"/>
+            <path d="M660 95H680" class="op-flow" marker-end="url(#tb-arrow)"/>
+            <path d="M786 174V222" class="op-flow" marker-end="url(#tb-arrow)"/>
+            <path d="M684 305H664" class="op-flow" marker-end="url(#tb-arrow)"/>
+            <path d="M460 305H440" class="op-flow" marker-end="url(#tb-arrow)"/>
+            <path d="M236 305H216" class="op-flow" marker-end="url(#tb-arrow)"/>
+            <text x="450" y="445" text-anchor="middle" class="op-small">数据 → 表征 → 建模 → 验证 → 应用域 → 可解释性：ADME 预测模型构建的八个核心步骤</text>
+          </svg>
+        </div>
+        <figcaption class="op-caption">依据教材图 5-18 的流程重绘：数据收集、数据处理、分子表征、特征选择、模型构建、模型评价、应用域分析、可解释性分析八个核心步骤。应用域阈值 D = μ + Zσ 中，μ 与 σ 为训练集分子两两距离 / 相似性的均值与标准差。</figcaption>
+      </figure>
     </section>
 
     <section class="detail-section">

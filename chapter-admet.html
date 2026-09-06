@@ -15,6 +15,7 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="output-figure.css">
 </head>
 <body data-nav="outputs">
 
@@ -52,6 +53,74 @@
         并介绍了在线数据库与预测 / 优化平台。
         最后，我们重点分析了 AI 在 ADMET 预测中面临的挑战，并提出该领域潜在的未来发展方向。
       </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>章节框架</h2>
+      <figure class="figure op-figure">
+        <div class="figure-header">
+          <span class="figure-title">AI 驱动的药物 ADMET 性质预测 · 章节框架</span>
+          <span class="figure-meta">CHAPTER OVERVIEW</span>
+        </div>
+        <div class="op-scroll" tabindex="0" role="region" aria-label="章节框架图，窄屏可横向滚动">
+          <svg class="figure-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-labelledby="ca-svg-title ca-svg-desc">
+            <title id="ca-svg-title">ADMET 性质预测的章节组织框架</title>
+            <desc id="ca-svg-desc">左侧为背景：湿实验测定 ADMET 性质耗时费力成本高，AI 预测具有速度快、精度高、资源消耗低的特点。中部为四个主体板块：分子表征方法、模型架构、可解释性与可说明性、分子性质优化。右侧为在线数据库与预测优化平台，以及挑战与未来方向。</desc>
+            <defs>
+              <marker id="ca-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
+            </defs>
+
+            <rect x="16" y="14" width="200" height="330" rx="10" class="op-box"/>
+            <text x="32" y="42" class="op-head" fill="var(--op-amber)">背景与动机</text>
+            <rect x="32" y="58" width="168" height="78" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
+            <text x="116" y="82" text-anchor="middle" class="op-small">湿实验测定 ADMET</text>
+            <text x="116" y="100" text-anchor="middle" class="op-small">耗时 · 费力 · 成本高</text>
+            <text x="116" y="118" text-anchor="middle" class="op-small">难以满足筛选需求</text>
+            <rect x="32" y="148" width="168" height="78" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
+            <text x="116" y="172" text-anchor="middle" class="op-small">AI 预测方法</text>
+            <text x="116" y="190" text-anchor="middle" class="op-small">速度 · 精度 · 效率</text>
+            <text x="116" y="208" text-anchor="middle" class="op-small">资源消耗低</text>
+            <text x="32" y="252" class="op-small">ADMET 性质深刻影响</text>
+            <text x="32" y="272" class="op-small">药物安全性与有效性</text>
+            <text x="32" y="292" class="op-small">（吸收 · 分布 · 代谢 ·</text>
+            <text x="32" y="312" class="op-small">排泄 · 毒性）</text>
+
+            <rect x="266" y="14" width="330" height="330" rx="10" class="op-box"/>
+            <text x="282" y="42" class="op-head" fill="var(--op-blue)">近期进展 · 四个板块</text>
+            <rect x="282" y="58" width="298" height="56" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="431" y="80" text-anchor="middle" class="op-small">分子表征方法</text>
+            <text x="431" y="99" text-anchor="middle" class="op-small">手工特征 · 序列表征 · 图表征等新兴方法</text>
+            <rect x="282" y="124" width="298" height="56" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="431" y="146" text-anchor="middle" class="op-small">模型架构</text>
+            <text x="431" y="165" text-anchor="middle" class="op-small">经典机器学习 · 深度学习与训练策略</text>
+            <rect x="282" y="190" width="298" height="56" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="431" y="212" text-anchor="middle" class="op-small">可解释性与可说明性</text>
+            <text x="431" y="231" text-anchor="middle" class="op-small">归因与解释方法</text>
+            <rect x="282" y="256" width="298" height="56" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
+            <text x="431" y="278" text-anchor="middle" class="op-small">分子性质优化</text>
+            <text x="431" y="297" text-anchor="middle" class="op-small">从预测到设计的延伸</text>
+            <text x="282" y="334" class="op-small">聚焦 2022 年及以后的研究</text>
+
+            <rect x="646" y="14" width="238" height="330" rx="10" class="op-box"/>
+            <text x="662" y="42" class="op-head" fill="var(--op-purple)">资源与展望</text>
+            <rect x="662" y="58" width="206" height="66" rx="6" fill="var(--op-purple)" fill-opacity=".09" stroke="var(--op-purple)" stroke-opacity=".5"/>
+            <text x="765" y="82" text-anchor="middle" class="op-small">在线数据库</text>
+            <text x="765" y="102" text-anchor="middle" class="op-small">实验数据资源</text>
+            <rect x="662" y="134" width="206" height="66" rx="6" fill="var(--op-purple)" fill-opacity=".09" stroke="var(--op-purple)" stroke-opacity=".5"/>
+            <text x="765" y="158" text-anchor="middle" class="op-small">预测 / 优化平台</text>
+            <text x="765" y="178" text-anchor="middle" class="op-small">在线工具与部署</text>
+            <rect x="662" y="210" width="206" height="66" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5" stroke-dasharray="5 4"/>
+            <text x="765" y="234" text-anchor="middle" class="op-small">关键挑战</text>
+            <text x="765" y="254" text-anchor="middle" class="op-small">数据 · 泛化 · 集成</text>
+            <rect x="662" y="286" width="206" height="44" rx="6" fill="var(--op-teal)" fill-opacity=".1" stroke="var(--op-teal)" stroke-opacity=".55"/>
+            <text x="765" y="312" text-anchor="middle" class="op-small">未来发展方向</text>
+
+            <path d="M224 179L260 179" class="op-flow" marker-end="url(#ca-arrow)"/>
+            <path d="M604 179L640 179" class="op-flow" marker-end="url(#ca-arrow)"/>
+          </svg>
+        </div>
+        <figcaption class="op-caption">依据章节结构绘制。以湿实验瓶颈与 AI 预测优势为背景，主体从分子表征、模型架构、可解释性到分子性质优化依次展开，并介绍在线数据库与预测 / 优化平台，最后讨论挑战与未来方向。</figcaption>
+      </figure>
     </section>
 
     <section class="detail-section">

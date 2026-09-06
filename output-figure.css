@@ -1,0 +1,14 @@
+/* Output-page figures: shared scoped styles, colors follow the site theme switch. */
+.op-figure { --op-blue:#63b3f5; --op-teal:#63ceb2; --op-purple:#b6a1e7; --op-amber:#e6b17c; --op-panel:#0b0d10; --op-wire:#94a5b8; padding:20px; }
+:root[data-theme="light"] .op-figure { --op-blue:#2278b9; --op-teal:#25816c; --op-purple:#8562b5; --op-amber:#9c642d; --op-panel:#fcfdfe; --op-wire:#718293; }
+.op-figure .figure-svg { font-family:var(--font-sans); min-width:620px; }
+.op-figure .figure-svg text { fill:var(--fg-secondary); }
+.op-figure .op-head { font-size:14px; font-weight:500; fill:var(--fg); }
+.op-figure .op-label { font-size:13.5px; fill:var(--fg); font-weight:500; }
+.op-figure .op-small { font-size:11px; fill:var(--fg-secondary); }
+.op-figure .op-flow { fill:none; stroke:var(--op-wire); stroke-width:1.7; }
+.op-figure .op-box { fill:var(--op-panel); stroke:var(--op-blue); stroke-opacity:.55; }
+.op-figure .op-caption { margin-top:18px; padding-top:16px; border-top:1px solid var(--divider); color:var(--fg-muted); font-size:13px; line-height:1.8; }
+.op-scroll { overflow-x:auto; overscroll-behavior-x:contain; border-radius:6px; }
+.op-scroll:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
+@media (max-width:600px) { .op-figure { padding:16px; } }

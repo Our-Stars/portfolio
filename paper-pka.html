@@ -15,6 +15,7 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="output-figure.css">
 </head>
 <body data-nav="outputs">
 
@@ -53,6 +54,86 @@
         GraFpKa 的高可靠性与可解释性在保证 pK<sub>a</sub> 预测准确性的同时，
         也促进了对分子结构与 pK<sub>a</sub> 值之间关系的深入理解，使其成为 pK<sub>a</sub> 预测领域的有力工具。
       </p>
+    </section>
+
+    <section class="detail-section">
+      <h2>方法框架</h2>
+      <figure class="figure op-figure">
+        <div class="figure-header">
+          <span class="figure-title">GraFpKa · 模型框架</span>
+          <span class="figure-meta">MODEL OVERVIEW</span>
+        </div>
+        <div class="op-scroll" tabindex="0" role="region" aria-label="GraFpKa 模型框架图，窄屏可横向滚动">
+          <svg class="figure-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="pp-svg-title pp-svg-desc">
+            <title id="pp-svg-title">GraFpKa 双分支融合预测框架</title>
+            <desc id="pp-svg-desc">分子图与混合分子指纹分别经 AttentiveFP 和多层感知机提取特征，拼接后由预测网络输出酸性或碱性 pKa。整体训练采用先预训练后微调的迁移学习策略，可解释性分析使用积分梯度。</desc>
+            <defs>
+              <marker id="pp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
+            </defs>
+
+            <rect x="16" y="14" width="260" height="130" rx="10" class="op-box"/>
+            <text x="32" y="42" class="op-head" fill="var(--op-teal)">分子图 · Molecule graph</text>
+            <g transform="translate(44 62)" fill="none" stroke="var(--fg-muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 28 38 13 64 28 64 56 38 71 12 56Z M64 28 90 13 M38 71 38 92"/>
+              <circle cx="12" cy="28" r="4.5" fill="var(--op-blue)"/><circle cx="38" cy="13" r="4.5" fill="var(--op-teal)"/><circle cx="64" cy="28" r="4.5" fill="var(--op-blue)"/><circle cx="64" cy="56" r="4.5" fill="var(--op-blue)"/><circle cx="38" cy="71" r="4.5" fill="var(--op-purple)"/><circle cx="90" cy="13" r="4.5" fill="var(--op-teal)"/><circle cx="38" cy="92" r="4.5" fill="var(--op-purple)"/>
+            </g>
+            <text x="146" y="72" class="op-small">原子为节点</text>
+            <text x="146" y="94" class="op-small">化学键为边</text>
+            <text x="146" y="116" class="op-small">捕获连接关系</text>
+
+            <rect x="16" y="216" width="260" height="130" rx="10" class="op-box"/>
+            <text x="32" y="244" class="op-head" fill="var(--op-purple)">混合分子指纹 · Fingerprints</text>
+            <g transform="translate(40 262)">
+              <rect x="0" y="0" width="13" height="10" rx="1.5" fill="var(--op-teal)" opacity=".8"/><rect x="0" y="13" width="13" height="10" rx="1.5" fill="var(--op-teal)" opacity=".45"/><rect x="0" y="26" width="13" height="10" rx="1.5" fill="var(--op-teal)" opacity=".9"/><rect x="0" y="39" width="13" height="10" rx="1.5" fill="var(--op-teal)" opacity=".5"/>
+            </g>
+            <text x="70" y="276" class="op-small">MACCS（166 位）</text>
+            <text x="70" y="298" class="op-small">ErG 药效团（315 位）</text>
+            <text x="70" y="320" class="op-small">PubChem（881 位）</text>
+            <text x="70" y="338" class="op-small">补充子结构与药效团信息</text>
+
+            <rect x="330" y="14" width="200" height="130" rx="10" class="op-box"/>
+            <text x="346" y="42" class="op-head" fill="var(--op-teal)">AttentiveFP</text>
+            <text x="346" y="70" class="op-small">图神经网络注意力机制</text>
+            <text x="346" y="92" class="op-small">学习原子连接关系特征</text>
+            <text x="346" y="118" class="op-small">h<tspan baseline-shift="sub" font-size="8">G</tspan> · 图特征</text>
+
+            <rect x="330" y="216" width="200" height="130" rx="10" class="op-box"/>
+            <text x="346" y="244" class="op-head" fill="var(--op-purple)">多层感知机 · MLP</text>
+            <text x="346" y="272" class="op-small">全连接层提取</text>
+            <text x="346" y="294" class="op-small">指纹补充结构特征</text>
+            <text x="346" y="320" class="op-small">h<tspan baseline-shift="sub" font-size="8">FP</tspan> · 指纹特征</text>
+
+            <rect x="584" y="115" width="170" height="130" rx="10" class="op-box"/>
+            <text x="600" y="143" class="op-head">特征拼接</text>
+            <text x="600" y="171" class="op-small">h<tspan baseline-shift="sub" font-size="8">integrated</tspan> = [ h<tspan baseline-shift="sub" font-size="8">FP</tspan> ; h<tspan baseline-shift="sub" font-size="8">G</tspan> ]</text>
+            <text x="600" y="197" class="op-small">联合表征进入预测网络</text>
+            <text x="600" y="223" class="op-small">分别输出酸 / 碱模型</text>
+
+            <rect x="600" y="14" width="284" height="66" rx="10" fill="var(--op-panel)" stroke="var(--op-teal)" stroke-opacity=".55" stroke-dasharray="5 5"/>
+            <text x="616" y="38" class="op-small">整体训练策略 · Transfer learning</text>
+            <rect x="616" y="48" width="108" height="22" rx="5" fill="var(--op-teal)" fill-opacity=".15" stroke="var(--op-teal)" stroke-opacity=".4"/>
+            <text x="670" y="63" text-anchor="middle" class="op-small">预训练</text>
+            <path d="M728 59H746" class="op-flow" marker-end="url(#pp-arrow)"/>
+            <rect x="750" y="48" width="108" height="22" rx="5" fill="var(--op-teal)" fill-opacity=".15" stroke="var(--op-teal)" stroke-opacity=".4"/>
+            <text x="804" y="63" text-anchor="middle" class="op-small">微调</text>
+
+            <rect x="600" y="280" width="284" height="66" rx="10" fill="var(--op-panel)" stroke="var(--op-amber)" stroke-opacity=".55" stroke-dasharray="5 5"/>
+            <text x="616" y="304" class="op-small">可解释性分析 · Integrated Gradients</text>
+            <text x="616" y="328" class="op-small">原子级贡献方向与大小可视化</text>
+
+            <path d="M284 79H320" class="op-flow" marker-end="url(#pp-arrow)"/>
+            <path d="M284 281H320" class="op-flow" marker-end="url(#pp-arrow)"/>
+            <path d="M538 79H560Q574 79 574 93V136L578 148" fill="none" stroke="var(--op-wire)" stroke-width="1.7" marker-end="url(#pp-arrow)"/>
+            <path d="M538 281H560Q574 281 574 267V220L578 208" fill="none" stroke="var(--op-wire)" stroke-width="1.7" marker-end="url(#pp-arrow)"/>
+            <path d="M742 180L768 180" class="op-flow" marker-end="url(#pp-arrow)"/>
+
+            <rect x="782" y="152" width="102" height="56" rx="8" fill="var(--op-blue)" fill-opacity=".12" stroke="var(--op-blue)"/>
+            <text x="833" y="177" text-anchor="middle" class="op-label">pK<tspan baseline-shift="sub" font-size="9">a</tspan></text>
+            <text x="833" y="196" text-anchor="middle" class="op-small">酸性 / 碱性</text>
+          </svg>
+        </div>
+        <figcaption class="op-caption">依据论文模型框架重绘。两条分支分别从分子图与混合分子指纹（MACCS、ErG、PubChem）中学习特征，拼接后由预测网络分别输出酸性与碱性 pK<sub>a</sub>；预训练—微调策略作用于整体模型，积分梯度用于原子级解释。图中分子与向量长度仅作示意。</figcaption>
+      </figure>
     </section>
 
     <section class="detail-section">
