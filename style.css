@@ -5,7 +5,7 @@
   --fg: #fff;
   --fg-secondary: #a0a0a0;
   --fg-muted: #999;
-  --fg-faint: #666;
+  --fg-faint: #7a7a7a;
   --divider: rgba(255, 255, 255, 0.1);
   --divider-strong: rgba(255, 255, 255, 0.2);
   --accent: #1d9bf0;
@@ -30,7 +30,7 @@
   --fg: #0f1419;
   --fg-secondary: #536471;
   --fg-muted: #71767b;
-  --fg-faint: #8b98a5;
+  --fg-faint: #687680;
   --divider: rgba(0, 0, 0, 0.1);
   --divider-strong: rgba(0, 0, 0, 0.2);
   --status-published: #00a75c;
@@ -63,6 +63,11 @@ body {
 ::selection { background: rgba(29, 155, 240, 0.35); }
 
 a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
 sub, sup { font-size: 0.7em; line-height: 0; }
 
@@ -241,6 +246,18 @@ sub, sup { font-size: 0.7em; line-height: 0; }
   margin-top: 40px;
   flex-wrap: wrap;
 }
+
+/* 首屏一次性编排入场：标题 → 副文 → 按钮 → 研究主线图 */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero .eyebrow { animation: hero-rise 0.55s ease both; }
+.hero h1 { animation: hero-rise 0.55s ease 0.07s both; }
+.hero .hero-sub { animation: hero-rise 0.55s ease 0.14s both; }
+.hero .hero-ctas { animation: hero-rise 0.55s ease 0.21s both; }
+.hero .figure { animation: hero-rise 0.7s ease 0.32s both; }
 
 .btn {
   display: inline-flex;
@@ -551,7 +568,8 @@ section { border-bottom: 1px solid var(--divider); }
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.project-row:hover .project-link { opacity: 1; transform: translateY(0); }
+.project-row:hover .project-link,
+.project-row:focus-within .project-link { opacity: 1; transform: translateY(0); }
 
 /* ============ 成果列表 ============ */
 .output-row {
@@ -810,6 +828,8 @@ footer { padding: 48px 0 64px; }
   .aromatic, .atom-hot { animation: none; }
   .trail-canvas { display: none; }
   .btn svg, .project-link { transition: none; }
+  .hero .eyebrow, .hero h1, .hero .hero-sub,
+  .hero .hero-ctas, .hero .figure { animation: none; }
 }
 
 /* ============ 响应式 ============ */
@@ -838,4 +858,50 @@ footer { padding: 48px 0 64px; }
   .hero { min-height: auto; }
   .footer-inner { flex-direction: column; }
   .related-row { flex-direction: column; gap: 8px; }
+}
+
+/* ============ 打印 ============ */
+@media print {
+  :root {
+    --bg: #fff;
+    --fg: #000;
+    --fg-secondary: #333;
+    --fg-muted: #555;
+    --fg-faint: #6a6a6a;
+    --divider: rgba(0, 0, 0, 0.18);
+    --divider-strong: rgba(0, 0, 0, 0.35);
+    --nav-bg: #fff;
+    --hover-bg: transparent;
+    --card-bg: #fff;
+    --chart-text: #6a6a6a;
+  }
+  :root .pka-architecture,
+  :root .mixture-architecture,
+  :root .nitrosamine-architecture,
+  :root .at-architecture,
+  :root .op-figure,
+  :root .research-map {
+    --pa-panel: #fff;
+    --mx-panel: #fff;
+    --na-panel: #fff;
+    --at-panel: #fff;
+    --op-panel: #fff;
+  }
+  .nav,
+  .trail-canvas,
+  .theme-btn,
+  .menu-btn,
+  .mobile-menu,
+  .hero-ctas,
+  .footer-cta,
+  .back-link {
+    display: none !important;
+  }
+  .hero { min-height: auto; padding-top: 32px; }
+  .detail { padding-top: 32px; min-height: auto; }
+  .hero .eyebrow, .hero h1, .hero .hero-sub,
+  .hero .hero-ctas, .hero .figure { animation: none; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .figure, .screenshot-card, .detail-section { break-inside: avoid; }
+  footer { padding: 24px 0 32px; }
 }
