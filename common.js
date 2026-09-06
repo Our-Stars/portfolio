@@ -65,6 +65,17 @@
   }
   if (footerRoot) footerRoot.innerHTML = FOOTER_HTML;
 
+  // 默认跟随浏览器/系统主题；手动切换仅影响当前页面，不跨访问持久化。
+  var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: light)');
+  function applySystemTheme(event) {
+    document.documentElement.setAttribute('data-theme', event.matches ? 'light' : 'dark');
+  }
+  if (colorSchemeQuery.addEventListener) {
+    colorSchemeQuery.addEventListener('change', applySystemTheme);
+  } else if (colorSchemeQuery.addListener) {
+    colorSchemeQuery.addListener(applySystemTheme);
+  }
+
   // 昼夜主题切换
   var themeBtn = document.getElementById('themeBtn');
   if (themeBtn) {
@@ -72,7 +83,6 @@
       var root = document.documentElement;
       var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
     });
   }
 
