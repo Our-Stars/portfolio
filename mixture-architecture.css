@@ -4,7 +4,6 @@
   --mx-purple: #b6a1e7;
   --mx-panel: #0b0d10;
   --mx-wire: #94a5b8;
-  max-width: 46rem;
   padding: 20px;
 }
 :root[data-theme="light"] .mixture-architecture {

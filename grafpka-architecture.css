@@ -1,5 +1,5 @@
 /* Scoped to the model figure; colors follow the site's theme switch. */
-.pka-page .detail-section .figure { max-width: 46rem; padding: 20px; }
+.pka-page .detail-section .figure { padding: 20px; }
 .pka-page .detail-section .figure + p { margin-top: 24px; }
 .pka-page .figure-header { align-items: flex-start; }
 #pka-architecture-heading { scroll-margin-top: 90px; }

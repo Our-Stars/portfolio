@@ -452,7 +452,6 @@ section { border-bottom: 1px solid var(--divider); }
 .project-desc {
   font-size: 15px;
   color: var(--fg-secondary);
-  max-width: 44em;
   line-height: 1.75;
 }
 
@@ -652,7 +651,6 @@ section { border-bottom: 1px solid var(--divider); }
 .detail-section p {
   color: var(--fg-secondary);
   line-height: 1.85;
-  max-width: 46em;
 }
 
 .detail-section ul { list-style: none; }
@@ -662,7 +660,6 @@ section { border-bottom: 1px solid var(--divider); }
   line-height: 1.75;
   padding: 12px 0 12px 26px;
   position: relative;
-  max-width: 44em;
 }
 
 .detail-section li::before {
@@ -689,7 +686,6 @@ section { border-bottom: 1px solid var(--divider); }
   font-size: 15px;
   font-weight: 500;
   color: var(--fg);
-  max-width: 38em;
 }
 
 .related-row a:hover {
