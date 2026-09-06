@@ -96,6 +96,12 @@ sub, sup { font-size: 0.7em; line-height: 0; }
   height: 64px;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
 .nav-logo {
   font-size: 15px;
   font-weight: 600;
@@ -106,7 +112,7 @@ sub, sup { font-size: 0.7em; line-height: 0; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 28px;
 }
 
 .nav-links a {

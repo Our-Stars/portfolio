@@ -11,16 +11,18 @@
   var NAV_HTML =
     '<div class="container nav-inner">' +
     '  <a class="nav-logo" href="index.html">Research Portfolio</a>' +
-    '  <div class="nav-links">' +
-    '    <a href="index.html#research" data-nav="research">科研项目</a>' +
-    '    <a href="index.html#outputs" data-nav="outputs">成果与获奖</a>' +
-    '    <a href="index.html#about" data-nav="about">关于我</a>' +
-    '  </div>' +
-    '  <div class="nav-actions">' +
-    '    <button class="theme-btn" id="themeBtn" aria-label="切换昼夜主题">' + SUN_SVG + MOON_SVG + '</button>' +
-    '    <button class="menu-btn" id="menuBtn" aria-label="打开菜单">' +
-    '      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>' +
-    '    </button>' +
+    '  <div class="nav-right">' +
+    '    <div class="nav-links">' +
+    '      <a href="index.html#research" data-nav="research">科研项目</a>' +
+    '      <a href="index.html#outputs" data-nav="outputs">成果与获奖</a>' +
+    '      <a href="index.html#about" data-nav="about">关于我</a>' +
+    '    </div>' +
+    '    <div class="nav-actions">' +
+    '      <button class="theme-btn" id="themeBtn" aria-label="切换昼夜主题">' + SUN_SVG + MOON_SVG + '</button>' +
+    '      <button class="menu-btn" id="menuBtn" aria-label="打开菜单">' +
+    '        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>' +
+    '      </button>' +
+    '    </div>' +
     '  </div>' +
     '</div>' +
     '<div class="mobile-menu" id="mobileMenu">' +
