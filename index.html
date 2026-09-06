@@ -15,6 +15,7 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="research-map.css">
 </head>
 <body data-nav="home">
 
@@ -37,49 +38,71 @@
       <a class="btn btn-ghost" href="#outputs">论文与成果</a>
     </div>
 
-    <figure class="figure">
-      <div class="figure-header">
-        <span class="figure-title">研究主线 · 以毒性为核心</span>
-        <span class="figure-meta">TOXICITY-CENTERED RESEARCH · 04 PROJECTS</span>
-      </div>
-      <svg class="figure-svg" viewBox="0 0 800 280" role="img" aria-label="以毒性为核心的四条研究主线示意图">
-        <!-- 中心节点 -->
-        <circle class="aromatic" cx="400" cy="75" r="46"/>
-        <circle class="hub" cx="400" cy="75" r="34"/>
-        <text class="hub-label" x="400" y="76">毒性</text>
-        <text class="hub-en" x="400" y="94">TOXICITY</text>
-        <!-- 分支 -->
-        <line class="branch" x1="368" y1="86.5" x2="100" y2="182"/>
-        <line class="branch" x1="373.5" y1="96.5" x2="267" y2="182"/>
-        <line class="branch" x1="426.5" y1="96.5" x2="533" y2="182"/>
-        <line class="branch" x1="432" y1="86.5" x2="700" y2="182"/>
-        <circle class="branch-dot" cx="100" cy="182" r="2.5"/>
-        <circle class="branch-dot" cx="267" cy="182" r="2.5"/>
-        <circle class="branch-dot" cx="533" cy="182" r="2.5"/>
-        <circle class="branch-dot" cx="700" cy="182" r="2.5"/>
-        <!-- 节点：单一物质 -->
-        <polygon class="node-icon" points="115.6,196 100,187 84.4,196 84.4,214 100,223 115.6,214"/>
-        <!-- 节点：混合物 -->
-        <polygon class="node-icon" points="272,193.5 259,186 246,193.5 246,208.5 259,216 272,208.5"/>
-        <polygon class="node-icon alt" points="290,203.5 277,196 264,203.5 264,216.5 277,224 290,216.5"/>
-        <!-- 节点：毒性相关性质 -->
-        <text class="node-pka" x="533" y="212">pK<tspan dy="4" font-size="12">a</tspan></text>
-        <!-- 节点：智能体 -->
-        <rect class="node-icon" x="690" y="188" width="20" height="26" rx="2"/>
-        <line class="branch" x1="695" y1="196" x2="705" y2="196"/>
-        <line class="branch" x1="695" y1="202" x2="705" y2="202"/>
-        <line class="branch" x1="695" y1="208" x2="701" y2="208"/>
-        <!-- 标签 -->
-        <text class="node-label" x="100" y="249">单一物质毒性预测</text>
-        <text class="node-en" x="100" y="267">SUBSTANCE TOXICITY</text>
-        <text class="node-label" x="267" y="249">混合物毒性预测</text>
-        <text class="node-en" x="267" y="267">MIXTURE TOXICITY</text>
-        <text class="node-label" x="533" y="249">毒性相关性质预测</text>
-        <text class="node-en" x="533" y="267">PROPERTY PREDICTION</text>
-        <text class="node-label" x="700" y="249">报告撰写智能体</text>
-        <text class="node-en" x="700" y="267">REPORTING AGENT</text>
-      </svg>
-    </figure>
+    <figure class="figure research-map">
+<div class="figure-header">
+<span class="figure-title">研究主线 · 以毒性为核心</span>
+<span class="figure-meta">ONE CORE / FOUR PERSPECTIVES</span>
+</div>
+<div class="rm-layout">
+<svg class="rm-connections" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true">
+<path d="M330 110C440 110 395 220 500 220S560 110 670 110M330 330C440 330 395 220 500 220S560 330 670 330" fill="none" stroke="var(--divider-strong)" stroke-width="1.5"/>
+<circle cx="500" cy="220" r="100" fill="none" stroke="var(--divider)" stroke-dasharray="3 9"/>
+</svg>
+<div class="rm-core">
+<span class="rm-core-kicker">RESEARCH FOCUS</span>
+<strong>毒性</strong>
+<span>TOXICITY</span>
+<p>预测 · 解释 · 证据整合</p>
+</div>
+<a class="rm-node rm-property" href="grafpka.html">
+<span class="rm-number">01 / PROPERTY</span>
+<svg viewBox="0 0 144 88" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 30L24 20L40 30V50L24 60L8 50ZM40 30L56 20M80 60C105 60 100 20 126 20M76 14V66H132"/>
+</svg>
+<h3>毒性相关性质预测</h3>
+<div class="rm-project">可解释深度学习 pK<sub>a</sub> 预测<span aria-hidden="true"> ↗</span>
+</div>
+<p>分子表征 · 酸碱解离 · 原子级解释</p>
+</a>
+<a class="rm-node rm-single" href="nitrosamine-ames.html">
+<span class="rm-number">04 / SINGLE</span>
+<svg viewBox="0 0 144 88" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 30L24 20L40 30V50L24 60L8 50ZM40 30L56 20M86 14C130 30 82 52 126 68M126 14C82 30 130 52 86 68M94 24H118M99 40H113M94 58H118"/>
+</svg>
+<h3>单一物质毒性预测</h3>
+<div class="rm-project">条件级亚硝胺致突变性预测<span aria-hidden="true"> ↗</span>
+</div>
+<p>实验条件 · 致突变性 · 数据集建设</p>
+</a>
+<a class="rm-node rm-mixture" href="mixture-toxicity.html">
+<span class="rm-number">02 / MIXTURE</span>
+<svg viewBox="0 0 144 88" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 25L22 17L36 25V41L22 49L8 41ZM48 47L62 39L76 47V63L62 71L48 63ZM41 24H51M46 19V29M85 44H109"/>
+<circle cx="122" cy="44" r="12"/>
+</svg>
+<h3>混合物毒性预测</h3>
+<div class="rm-project">二元混合物毒性预测<span aria-hidden="true"> ↗</span>
+</div>
+<p>组分比例 · 联合毒性 · 相互作用</p>
+</a>
+<a class="rm-node rm-report" href="autotoxreporter.html">
+<span class="rm-number">03 / REPORT</span>
+<svg viewBox="0 0 144 88" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="7" y="18" width="24" height="18" rx="4"/>
+<rect x="7" y="55" width="24" height="18" rx="4"/>
+<rect x="52" y="35" width="24" height="18" rx="4"/>
+<path d="M31 27L52 44M31 64L52 44M76 44H97"/>
+<rect x="98" y="17" width="34" height="54" rx="4"/>
+<path d="M106 30H124M106 40H124M106 50H124M106 60H117"/>
+</svg>
+<h3>毒性报告撰写智能体</h3>
+<div class="rm-project">AutoToxReporter<span aria-hidden="true"> ↗</span>
+</div>
+<p>多源证据 · 协作撰写 · 来源追溯</p>
+</a>
+</div>
+<figcaption class="rm-caption">四个相互关联的研究方向，共同围绕化学品毒性展开。点击各方向可查看项目。</figcaption>
+</figure>
   </div>
 </header>
 
@@ -88,7 +111,7 @@
   <div class="container section-pad">
     <div class="section-head reveal">
       <div class="section-kicker">SELECTED RESEARCH · 04</div>
-      <h2 class="section-title">四个科研项目，一条从分子表征到科学智能体的研究主线</h2>
+      <h2 class="section-title">四个科研项目，围绕毒性的四个研究方向</h2>
     </div>
 
     <article class="project-row reveal">
