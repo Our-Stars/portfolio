@@ -15,9 +15,9 @@
   })();
 </script>
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="output-figure.css">
+<link rel="stylesheet" href="autotox-architecture.css">
 </head>
-<body data-nav="outputs">
+<body data-nav="outputs" class="autotox-page">
 
 <nav class="nav" id="site-nav"></nav>
 
@@ -58,85 +58,104 @@
     </section>
 
     <section class="detail-section">
-      <h2>系统框架</h2>
-      <figure class="figure op-figure">
-        <div class="figure-header">
-          <span class="figure-title">AutoToxReporter · 系统框架</span>
-          <span class="figure-meta">MULTI-AGENT WORKFLOW</span>
-        </div>
-        <div class="op-scroll" tabindex="0" role="region" aria-label="AutoToxReporter 系统框架图，窄屏可横向滚动">
-          <svg class="figure-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-labelledby="pa-svg-title pa-svg-desc">
-            <title id="pa-svg-title">AutoToxReporter 五模块工作流</title>
-            <desc id="pa-svg-desc">用户输入化学品标识、毒性终点与生成参数；多个 Generator 生成候选大纲，Integrator 整合，也可使用自定义大纲；Composer 调用 QSAR Toolbox、admetSAR 3.0、CTD 与 PubMed 工具撰写报告；Reflector 反思修订，Inspector 可选检查；输出带来源标注的毒理学报告。评估模块离线比较量规评分、多评委一致性与引文支持。</desc>
-            <defs>
-              <marker id="pa-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--op-wire)"/></marker>
-            </defs>
-
-            <rect x="16" y="14" width="184" height="330" rx="10" class="op-box"/>
-            <text x="32" y="42" class="op-head" fill="var(--op-teal)">01 · 用户输入</text>
-            <rect x="32" y="58" width="152" height="34" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="108" y="79" text-anchor="middle" class="op-small">化学品标识</text>
-            <rect x="32" y="100" width="152" height="34" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="108" y="121" text-anchor="middle" class="op-small">毒性终点 · 语言</text>
-            <rect x="32" y="142" width="152" height="34" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5" stroke-dasharray="5 4"/>
-            <text x="108" y="163" text-anchor="middle" class="op-small">自定义大纲（可选）</text>
-            <rect x="32" y="184" width="152" height="34" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="108" y="205" text-anchor="middle" class="op-small">单次 / 分步生成</text>
-            <rect x="32" y="226" width="152" height="34" rx="6" fill="var(--op-teal)" fill-opacity=".09" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="108" y="247" text-anchor="middle" class="op-small">反思轮数 · Inspector</text>
-
-            <rect x="238" y="14" width="184" height="330" rx="10" class="op-box"/>
-            <text x="254" y="42" class="op-head" fill="var(--op-blue)">02 · 大纲规划</text>
-            <rect x="254" y="58" width="152" height="34" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="330" y="79" text-anchor="middle" class="op-small">Generator 1…N</text>
-            <rect x="254" y="100" width="152" height="34" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="330" y="121" text-anchor="middle" class="op-small">多模型候选大纲</text>
-            <rect x="254" y="142" width="152" height="34" rx="6" fill="var(--op-blue)" fill-opacity=".09" stroke="var(--op-blue)" stroke-opacity=".5"/>
-            <text x="330" y="163" text-anchor="middle" class="op-small">Integrator 整合</text>
-            <text x="254" y="205" class="op-small">去重 · 补缺</text>
-            <text x="254" y="227" class="op-small">统一章节结构</text>
-            <text x="254" y="249" class="op-small">供用户编辑</text>
-
-            <rect x="460" y="14" width="184" height="330" rx="10" class="op-box"/>
-            <text x="476" y="42" class="op-head" fill="var(--op-amber)">03 · 报告生成</text>
-            <rect x="476" y="58" width="152" height="34" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
-            <text x="552" y="79" text-anchor="middle" class="op-small">Composer 撰写</text>
-            <rect x="476" y="100" width="152" height="34" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5"/>
-            <text x="552" y="121" text-anchor="middle" class="op-small">Reflector 反思修订 × M</text>
-            <rect x="476" y="142" width="152" height="34" rx="6" fill="var(--op-amber)" fill-opacity=".09" stroke="var(--op-amber)" stroke-opacity=".5" stroke-dasharray="5 4"/>
-            <text x="552" y="163" text-anchor="middle" class="op-small">Inspector（可选）</text>
-            <text x="476" y="205" class="op-small">证据使用 · 引文格式</text>
-            <text x="476" y="227" class="op-small">大纲覆盖检查</text>
-            <text x="476" y="249" class="op-small">结构化来源占位符</text>
-
-            <rect x="682" y="14" width="202" height="330" rx="10" class="op-box"/>
-            <text x="698" y="42" class="op-head">04 · 输出</text>
-            <rect x="698" y="58" width="170" height="44" rx="6" fill="var(--op-purple)" fill-opacity=".09" stroke="var(--op-purple)" stroke-opacity=".5"/>
-            <text x="783" y="76" text-anchor="middle" class="op-small">Markdown 报告</text>
-            <text x="783" y="93" text-anchor="middle" class="op-small">结构化引文 · References</text>
-            <text x="698" y="128" class="op-small">正文与来源并列审阅</text>
-            <text x="698" y="150" class="op-small">去重 · 按出现顺序编号</text>
-            <rect x="698" y="168" width="170" height="60" rx="6" fill="var(--op-panel)" stroke="var(--divider-strong)"/>
-            <text x="783" y="190" text-anchor="middle" class="op-small">05 · 研究评估（离线）</text>
-            <text x="783" y="208" text-anchor="middle" class="op-small">量规评分 · 多评委一致性</text>
-            <text x="783" y="223" text-anchor="middle" class="op-small">基线比较 · 人工引文核查</text>
-
-            <rect x="238" y="264" width="406" height="80" rx="10" fill="var(--op-panel)" stroke="var(--op-teal)" stroke-opacity=".5"/>
-            <text x="254" y="290" class="op-head" fill="var(--op-teal)">工具层 · Function Calling</text>
-            <text x="254" y="316" class="op-small">QSAR Toolbox（结构警示 / 实验 / 预测）</text>
-            <text x="254" y="336" class="op-small">admetSAR 3.0（ADMET 预测）</text>
-            <text x="441" y="316" class="op-small">CTD（基因 / 通路 / 疾病）</text>
-            <text x="441" y="336" class="op-small">PubMed（文献摘要 / 来源）</text>
-
-            <path d="M206 79H226" class="op-flow" marker-end="url(#pa-arrow)"/>
-            <path d="M206 243V226" class="op-flow" stroke-dasharray="5 4" marker-end="url(#pa-arrow)"/>
-            <path d="M428 79H448" class="op-flow" marker-end="url(#pa-arrow)"/>
-            <path d="M648 79H668" class="op-flow" marker-end="url(#pa-arrow)"/>
-            <path d="M552 226V254H441V268" fill="none" stroke="var(--op-wire)" stroke-width="1.7" marker-end="url(#pa-arrow)"/>
-          </svg>
-        </div>
-        <figcaption class="op-caption">依据论文整体工作流重绘。大纲规划与报告生成模块通过 Function Calling 共享外部工具层；自定义大纲可绕过自动规划，反思轮数与 Inspector 均可配置。输出为带结构化引文的 Markdown 报告；研究评估为离线设置，不表示每次生成都执行完整评估。</figcaption>
-      </figure>
+      <h2>系统架构</h2>
+      <figure class="figure at-architecture"><div class="figure-header"><span class="figure-title">AutoToxReporter · 系统架构</span><span class="figure-meta">MULTI-AGENT WORKFLOW</span></div><div class="at-scroll" tabindex="0" role="region" aria-label="系统架构图，窄屏可横向滚动"><svg class="at-svg" viewBox="0 0 980 660" role="img" aria-labelledby="at-title at-desc">
+<title id="at-title">AutoToxReporter 多智能体架构</title>
+<desc id="at-desc">输入化学品、毒性终点和语言，多模型生成大纲后由 Integrator 整合，也可提供自定义大纲。Composer 撰写，Reflector 按设置反思修订，Inspector 可选检查，输出带来源的报告。规划与生成阶段调用证据及编辑工具。研究评估比较量规评分、多评委一致性、基线和引文支持情况。</desc>
+<defs>
+<marker id="at-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M0 0L10 5L0 10Z" fill="var(--at-wire)"/>
+</marker>
+</defs>
+<rect x="16" y="18" width="206" height="465" rx="14" fill="var(--at-panel)" stroke="var(--at-teal)" stroke-opacity=".55"/>
+<text x="32" y="49" class="at-head" fill="var(--at-teal)">01 / 输入与设置</text>
+<rect x="260" y="18" width="206" height="465" rx="14" fill="var(--at-panel)" stroke="var(--at-blue)" stroke-opacity=".55"/>
+<text x="276" y="49" class="at-head" fill="var(--at-blue)">02 / 大纲规划</text>
+<rect x="504" y="18" width="206" height="465" rx="14" fill="var(--at-panel)" stroke="var(--at-orange)" stroke-opacity=".55"/>
+<text x="520" y="49" class="at-head" fill="var(--at-orange)">03 / 报告生成</text>
+<rect x="748" y="18" width="216" height="465" rx="14" fill="var(--at-panel)" stroke="var(--at-purple)" stroke-opacity=".55"/>
+<text x="764" y="49" class="at-head" fill="var(--at-purple)">04 / 研究评估</text>
+<text x="32" y="87" class="at-small">化学品标识</text>
+<rect x="32" y="99" width="174" height="38" rx="7" fill="var(--at-teal)" fill-opacity=".09" stroke="var(--at-teal)" stroke-opacity=".5"/>
+<text x="119" y="123" text-anchor="middle" class="at-label">CAS / 名称 / SMILES</text>
+<rect x="32" y="148" width="174" height="38" rx="7" fill="var(--at-teal)" fill-opacity=".09" stroke="var(--at-teal)" stroke-opacity=".5"/>
+<text x="119" y="172" text-anchor="middle" class="at-label">毒性终点 · 报告语言</text>
+<rect x="32" y="208" width="174" height="38" rx="7" fill="var(--at-teal)" fill-opacity=".09" stroke="var(--at-teal)" stroke-opacity=".5" stroke-dasharray="5 4"/>
+<text x="119" y="232" text-anchor="middle" class="at-label">自定义大纲（可选）</text>
+<path d="M32 269H206" stroke="var(--divider-strong)"/>
+<text x="32" y="300" class="at-small">生成参数</text>
+<rect x="32" y="315" width="174" height="38" rx="7" fill="var(--at-teal)" fill-opacity=".09" stroke="var(--at-teal)" stroke-opacity=".5"/>
+<text x="119" y="339" text-anchor="middle" class="at-label">单次 / 分步生成</text>
+<rect x="32" y="365" width="174" height="38" rx="7" fill="var(--at-teal)" fill-opacity=".09" stroke="var(--at-teal)" stroke-opacity=".5"/>
+<text x="119" y="389" text-anchor="middle" class="at-label">反思轮数 · M</text>
+<rect x="32" y="415" width="174" height="38" rx="7" fill="var(--at-teal)" fill-opacity=".09" stroke="var(--at-teal)" stroke-opacity=".5"/>
+<text x="119" y="439" text-anchor="middle" class="at-label">Inspector 开 / 关</text>
+<rect x="277" y="87" width="135" height="38" rx="7" fill="var(--at-blue)" fill-opacity=".09" stroke="var(--at-blue)" stroke-opacity=".5"/>
+<text x="344.5" y="111" text-anchor="middle" class="at-label">Generator 1</text>
+<path d="M412 106H440V298H414" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="277" y="145" width="135" height="38" rx="7" fill="var(--at-blue)" fill-opacity=".09" stroke="var(--at-blue)" stroke-opacity=".5"/>
+<text x="344.5" y="169" text-anchor="middle" class="at-label">Generator 2</text>
+<path d="M412 164H440V298H414" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="277" y="203" width="135" height="38" rx="7" fill="var(--at-blue)" fill-opacity=".09" stroke="var(--at-blue)" stroke-opacity=".5"/>
+<text x="344.5" y="227" text-anchor="middle" class="at-label">Generator N</text>
+<path d="M412 222H440V298H414" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="277" y="279" width="137" height="38" rx="7" fill="var(--at-blue)" fill-opacity=".09" stroke="var(--at-blue)" stroke-opacity=".5"/>
+<text x="345.5" y="303" text-anchor="middle" class="at-label">Integrator</text>
+<path d="M345 317V355" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="277" y="356" width="172" height="38" rx="7" fill="var(--at-blue)" fill-opacity=".09" stroke="var(--at-blue)" stroke-opacity=".5"/>
+<text x="363" y="380" text-anchor="middle" class="at-label">可编辑的最终大纲</text>
+<text x="277" y="435" class="at-small">多模型独立提纲</text>
+<text x="277" y="459" class="at-small">去重 · 补缺 · 统一结构</text>
+<path d="M222 119H260" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<path d="M206 227H240V375H277" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)" stroke-dasharray="5 4"/>
+<path d="M449 375H483V106H533" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="533" y="87" width="159" height="38" rx="7" fill="var(--at-orange)" fill-opacity=".09" stroke="var(--at-orange)" stroke-opacity=".5"/>
+<text x="612.5" y="111" text-anchor="middle" class="at-label">Composer</text>
+<path d="M612 125V149" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="533" y="149" width="159" height="38" rx="7" fill="var(--at-orange)" fill-opacity=".09" stroke="var(--at-orange)" stroke-opacity=".5"/>
+<text x="612.5" y="173" text-anchor="middle" class="at-label">初稿 · Draft</text>
+<path d="M612 187V211" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="533" y="211" width="159" height="38" rx="7" fill="var(--at-orange)" fill-opacity=".09" stroke="var(--at-orange)" stroke-opacity=".5"/>
+<text x="612.5" y="235" text-anchor="middle" class="at-label">Reflector</text>
+<path d="M612 249V273" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="533" y="273" width="159" height="38" rx="7" fill="var(--at-orange)" fill-opacity=".09" stroke="var(--at-orange)" stroke-opacity=".5"/>
+<text x="612.5" y="297" text-anchor="middle" class="at-label">修订稿 · Draft</text>
+<path d="M612 311V335" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="533" y="335" width="159" height="38" rx="7" stroke-dasharray="5 4" fill="var(--at-orange)" fill-opacity=".09" stroke="var(--at-orange)" stroke-opacity=".5"/>
+<text x="612.5" y="359" text-anchor="middle" class="at-label">Inspector（可选）</text>
+<path d="M612 373V397" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<rect x="533" y="397" width="159" height="38" rx="7" fill="var(--at-orange)" fill-opacity=".09" stroke="var(--at-orange)" stroke-opacity=".5"/>
+<text x="612.5" y="421" text-anchor="middle" class="at-label">最终报告 + 引文</text>
+<path d="M533 230H518V106H533" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<text x="607" y="460" text-anchor="middle" class="at-small">反思修订 × M</text>
+<rect x="764" y="87" width="184" height="38" rx="7" fill="var(--at-purple)" fill-opacity=".09" stroke="var(--at-purple)" stroke-opacity=".5"/>
+<text x="856" y="111" text-anchor="middle" class="at-label">量规评分 · 五个维度</text>
+<rect x="764" y="145" width="184" height="38" rx="7" fill="var(--at-purple)" fill-opacity=".09" stroke="var(--at-purple)" stroke-opacity=".5"/>
+<text x="856" y="169" text-anchor="middle" class="at-label">多评委一致性</text>
+<rect x="764" y="203" width="184" height="38" rx="7" fill="var(--at-purple)" fill-opacity=".09" stroke="var(--at-purple)" stroke-opacity=".5"/>
+<text x="856" y="227" text-anchor="middle" class="at-label">基线方法比较</text>
+<rect x="764" y="261" width="184" height="38" rx="7" fill="var(--at-purple)" fill-opacity=".09" stroke="var(--at-purple)" stroke-opacity=".5"/>
+<text x="856" y="285" text-anchor="middle" class="at-label">人工引文支持核查</text>
+<text x="764" y="354" class="at-small">比较设置</text>
+<text x="764" y="386" class="at-label">生成模式 / 反思轮数</text>
+<text x="764" y="416" class="at-label">Inspector / 报告语言</text>
+<text x="764" y="459" class="at-small">离线研究评估，非必经步骤</text>
+<path d="M710 418H733V194H764" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)" stroke-dasharray="5 4"/>
+<rect x="16" y="527" width="948" height="116" rx="14" fill="var(--at-panel)" stroke="var(--at-teal)" stroke-opacity=".5"/>
+<text x="32" y="552" class="at-head" fill="var(--at-teal)">共享工具 / Function Calling</text>
+<text x="32" y="586" class="at-label">报告编辑</text>
+<text x="32" y="615" class="at-small">检索 / 插入 / 替换 / 删除</text>
+<text x="217" y="586" class="at-label">QSAR Toolbox</text>
+<text x="217" y="615" class="at-small">性质 / 结构警示 / 实验</text>
+<text x="402" y="586" class="at-label">admetSAR 3.0</text>
+<text x="402" y="615" class="at-small">ADMET 性质预测</text>
+<text x="587" y="586" class="at-label">CTD</text>
+<text x="587" y="615" class="at-small">基因 / 疾病 / 通路</text>
+<text x="772" y="586" class="at-label">PubMed</text>
+<text x="772" y="615" class="at-small">文献摘要与来源</text>
+<path d="M363 527V484" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+<path d="M612 527V484" fill="none" stroke="var(--at-wire)" stroke-width="1.7" marker-end="url(#at-arrow)"/>
+</svg></div><figcaption class="at-caption">依据研究架构图重绘。多模型大纲规划与报告生成共享工具层；自定义大纲可绕过自动规划。反思轮数与 Inspector 均可配置，最终报告支持来源追溯。右侧为研究中的评估设计，不表示每次生成都执行完整评估。</figcaption></figure>
     </section>
 
     <section class="detail-section">
