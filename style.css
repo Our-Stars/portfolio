@@ -953,7 +953,7 @@ footer { padding: 48px 0 64px; }
 }
 
 @media (max-width: 600px) {
-  .container { padding-inline: 20px; }
+  .container { padding-inline: 24px; }
 
   .nav-inner { height: 60px; }
   .nav-logo { font-size: 14px; }
@@ -964,7 +964,7 @@ footer { padding: 48px 0 64px; }
     height: 44px;
     padding: 0;
   }
-  .mobile-menu { padding: 8px 20px 20px; }
+  .mobile-menu { padding: 8px 24px 20px; }
 
   .hero {
     padding: 104px 0 56px;
@@ -977,7 +977,7 @@ footer { padding: 48px 0 64px; }
   .hero .figure { margin-top: 48px; }
   .hero-ctas { margin-top: 32px; }
 
-  .section-pad { padding: 64px 0; }
+  .section-pad { padding-block: 64px; }
   .section-head { margin-bottom: 36px; }
   .section-title { font-size: 28px; }
 
