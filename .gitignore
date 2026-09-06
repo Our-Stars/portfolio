@@ -16,3 +16,4 @@ dist/
 *.tsbuildinfo
 test-results/
 playwright-report/
+.opencode/
